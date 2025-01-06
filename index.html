@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>База данных студентов</title>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .editable {
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>База данных студентов</h1>
+    <div class="actions">
+      <input type="file" id="upload" accept=".xls,.xlsx">
+      <button id="download-json">Скачать данные в JSON</button>
+    </div>
+    <table id="student-table">
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>ФИО</th>
+          <th>ФИО (англ)</th>
+          <th>Приказ</th>
+          <th>Дата приказа</th>
+          <th>Год рождения</th>
+          <th>Страна</th>
+          <th>Пол</th>
+          <th>Серия и номер паспорта</th>
+          <th>Группа</th>
+          <th>Факультет</th>
+          <th>Курс</th>
+          <th>Примечание</th>
+          <th>Форма обучения</th>
+          <th>Разрешение на временное пребывание</th>
+          <th>День</th>
+          <th>Месяц</th>
+          <th>Год</th>
+          <th>День</th>
+          <th>Месяц</th>
+          <th>Год</th>
+          <th>Домашний адрес</th>
+          <th>Общежитие/квартира</th>
+          <th>Год поступления</th>
+          <th>Год окончания</th>
+          <th>Куратор</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Данные будут добавляться здесь динамически -->
+      </tbody>
+    </table>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
