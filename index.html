@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>База данных студентов</title>
   <link rel="stylesheet" href="./css/style.css">
-
-
 </head>
 
 <body>
@@ -15,11 +13,8 @@
     <h1>База данных студентов</h1>
     <div class="actions">
       <input type="file" id="upload" accept=".xls,.xlsx">
-      <button id="download-json">Скачать данные в JSON</button>
-      <!-- <button id="sort-country-btn">Выбрать страну</button> -->
-      <select id="country-filter" multiple style="width: 200px; display: none;">
-        <!-- Список стран будет добавлен динамически -->
-      </select>
+      <button id="download-json">Сохранить данные в JSON</button>
+      <button id="load-json">Скачать данные в JSON</button>
     </div>
 
     <table id="student-table">
@@ -47,7 +42,7 @@
           <th rowspan="2">Год поступления</th>
           <th rowspan="2">Год окончания</th>
           <th rowspan="2">Примечание</th>
-          <th id=curator rowspan="2">Куратор</th>
+          <th id="curator" rowspan="2">Куратор</th>
           <th rowspan="2">Телефон куратора</th>
           <th rowspan="2">Телефон студента</th>
           <th rowspan="2">Примечание</th>
@@ -67,6 +62,11 @@
       </tbody>
     </table>
   </div>
+
+  <div id="notification" style="display: none; color: red; font-weight: bold;">
+    Загрузите файл JSON.
+  </div>
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>

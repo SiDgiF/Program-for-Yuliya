@@ -1,11 +1,10 @@
-// Получение элементов DOM
 const upload = document.getElementById("upload");
 const downloadJsonBtn = document.getElementById("download-json");
+const loadJsonBtn = document.getElementById("load-json");
 const tableBody = document
   .getElementById("student-table")
   .querySelector("tbody");
-const sortCountryBtn = document.getElementById("sort-country-btn");
-const countryFilter = document.getElementById("country-filter");
+const notification = document.getElementById("notification"); // Элемент для уведомления
 
 let students = [];
 
@@ -18,12 +17,12 @@ function parseExcelDate(excelDate) {
       "0"
     )}.${date.y}`;
   }
-  return excelDate || ""; // Если значение не число, возвращаем его как есть
+  return excelDate || "";
 }
 
 // Функция для обновления таблицы
 function updateTable(data) {
-  tableBody.innerHTML = ""; // Очистка таблицы
+  tableBody.innerHTML = "";
   data.forEach((student, index) => {
     const row = document.createElement("tr");
 
@@ -89,9 +88,7 @@ upload.addEventListener("change", (event) => {
 
       // Преобразование Excel в JSON
       const jsonData = XLSX.utils.sheet_to_json(worksheet);
-      console.log("Raw data from Excel:", jsonData);
 
-      // Преобразование данных в формат объектов
       students = jsonData.map((row) => ({
         name: row["ФИО"] || "",
         nameEn: row["ФИО (англ)"] || "",
@@ -102,8 +99,7 @@ upload.addEventListener("change", (event) => {
         gender: row["Пол"] || "",
         passport: String(
           row["Серия и номер паспорта, дата выдачи, срок действия"] || ""
-        ), // Преобразование в строку
-        // Проверьте формат ячейки в Excel. Убедитесь, что она установлена как "Текстовый", а не "Общий" или "Дата".
+        ),
         group: row["Группа"] || "",
         faculty: row["Факультет"] || "",
         course: row["Курс"] || "",
@@ -121,17 +117,15 @@ upload.addEventListener("change", (event) => {
         enrollmentYear: row["Год поступления"] || "",
         graduationYear: row["Год окончания"] || "",
         note2: row["Примечание"] || "",
-        curator: row["Куратор"] || "", // Новый столбец
+        curator: row["Куратор"] || "",
         phoneCurator: row["Телефон куратора"] || "",
         phoneStudent: row["Телефон студента"] || "",
         note3: row["Примечание"] || "",
       }));
 
-      console.log("Преобразованные данные:", students);
-      console.log(
-        "Данные паспорта:",
-        students.map((s) => s.passport)
-      );
+      // Сохраняем данные в localStorage
+      localStorage.setItem("studentsData", JSON.stringify(students));
+
       // Обновление таблицы на экране
       updateTable(students);
     } catch (error) {
@@ -142,29 +136,83 @@ upload.addEventListener("change", (event) => {
   reader.readAsArrayBuffer(file);
 });
 
-// start* Автоматическая ширина на основе содержимого
-// function adjustColumnWidths(tableId) {
-//   const table = document.getElementById(tableId);
-//   const headerCells = table.querySelectorAll("thead th");
+// Сохранение данных в JSON
+downloadJsonBtn.addEventListener("click", () => {
+  const studentsData = localStorage.getItem("studentsData");
+  if (studentsData) {
+    // Преобразование строки JSON в объект
+    const studentsArray = JSON.parse(studentsData);
 
-//   headerCells.forEach((headerCell, index) => {
-//     let maxWidth = headerCell.offsetWidth; // Начинаем с ширины заголовка
+    // Преобразование обратно в JSON с отступами для читаемости
+    const formattedJson = JSON.stringify(studentsArray, null, 2);
 
-//     // Проходим по всем строкам таблицы
-//     table.querySelectorAll("tbody tr").forEach((row) => {
-//       const cell = row.cells[index];
-//       if (cell) {
-//         maxWidth = Math.max(maxWidth, cell.scrollWidth);
-//       }
-//     });
+    // Создание Blob с типом "application/json"
+    const blob = new Blob([formattedJson], { type: "application/json" });
 
-//     // Устанавливаем максимальную ширину для текущего столбца
-//     headerCell.style.width = `${maxWidth}px`;
-//   });
-// }
+    // Скачивание файла
+    saveAs(blob, "students_data.json");
+  } else {
+    alert("Нет данных для сохранения!");
+  }
+});
 
-// // Вызываем функцию после добавления данных
-// updateTable(students); // Ваша функция для обновления таблицы
-// adjustColumnWidths("student-table");
+// Загрузка данных из JSON
+loadJsonBtn.addEventListener("click", () => {
+  const fileInput = document.createElement("input");
+  fileInput.type = "file";
+  fileInput.accept = ".json";
+  fileInput.click();
 
-// end* Автоматическая ширина на основе содержимого
+  fileInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      alert("Выберите файл!");
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = (e) => {
+      try {
+        const jsonData = JSON.parse(e.target.result);
+        students = jsonData;
+
+        // Сохраняем путь к выбранному файлу в localStorage
+        const filePath = URL.createObjectURL(file);
+        localStorage.setItem("jsonFilePath", filePath);
+
+        updateTable(students);
+      } catch (error) {
+        alert("Ошибка при обработке файла JSON: " + error.message);
+      }
+    };
+
+    reader.readAsText(file);
+  });
+});
+
+// Автоматическая загрузка данных при загрузке страницы, если путь сохранен
+document.addEventListener("DOMContentLoaded", () => {
+  const jsonFilePath = localStorage.getItem("jsonFilePath");
+
+  if (jsonFilePath) {
+    // Если путь есть, загружаем данные
+    loadDataFromFile(jsonFilePath);
+  } else {
+    // Если пути нет, показываем уведомление
+    notification.style.display = "block";
+  }
+});
+
+// Функция для загрузки данных из файла JSON
+function loadDataFromFile(filePath) {
+  fetch(filePath)
+    .then((response) => response.json())
+    .then((data) => {
+      students = data; // Сохраняем данные
+      updateTable(data); // Обновляем таблицу
+    })
+    .catch((error) => {
+      alert("Ошибка при загрузке данных: " + error.message);
+    });
+}
