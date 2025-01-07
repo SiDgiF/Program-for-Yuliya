@@ -1,0 +1,24 @@
+@charset "UTF-8";
+#student-table {
+  width: 100%; /* Таблица занимает всю доступную ширину */
+  table-layout: auto; /* Автоматическое вычисление ширины столбцов */
+  border-collapse: collapse;
+}
+
+#student-table th,
+#student-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+  max-height: 3em;
+  white-space: normal;
+}
+
+#student-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+#student-table td:nth-child(27) {
+  white-space: nowrap;
+}

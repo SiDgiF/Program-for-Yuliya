@@ -9,13 +9,14 @@ const countryFilter = document.getElementById("country-filter");
 
 let students = [];
 
-// Функция для преобразования даты Excel в формат YYYY-MM-DD
+// Функция для преобразования даты Excel в формат DD.MM.YYYY
 function parseExcelDate(excelDate) {
   if (typeof excelDate === "number") {
     const date = XLSX.SSF.parse_date_code(excelDate);
-    return `${date.y}-${String(date.m).padStart(2, "0")}-${String(
-      date.d
-    ).padStart(2, "0")}`;
+    return `${String(date.d).padStart(2, "0")}.${String(date.m).padStart(
+      2,
+      "0"
+    )}.${date.y}`;
   }
   return excelDate || ""; // Если значение не число, возвращаем его как есть
 }
@@ -140,3 +141,30 @@ upload.addEventListener("change", (event) => {
 
   reader.readAsArrayBuffer(file);
 });
+
+// start* Автоматическая ширина на основе содержимого
+// function adjustColumnWidths(tableId) {
+//   const table = document.getElementById(tableId);
+//   const headerCells = table.querySelectorAll("thead th");
+
+//   headerCells.forEach((headerCell, index) => {
+//     let maxWidth = headerCell.offsetWidth; // Начинаем с ширины заголовка
+
+//     // Проходим по всем строкам таблицы
+//     table.querySelectorAll("tbody tr").forEach((row) => {
+//       const cell = row.cells[index];
+//       if (cell) {
+//         maxWidth = Math.max(maxWidth, cell.scrollWidth);
+//       }
+//     });
+
+//     // Устанавливаем максимальную ширину для текущего столбца
+//     headerCell.style.width = `${maxWidth}px`;
+//   });
+// }
+
+// // Вызываем функцию после добавления данных
+// updateTable(students); // Ваша функция для обновления таблицы
+// adjustColumnWidths("student-table");
+
+// end* Автоматическая ширина на основе содержимого
