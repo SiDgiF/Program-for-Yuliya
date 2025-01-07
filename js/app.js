@@ -6,9 +6,6 @@ const tableBody = document
   .querySelector("tbody");
 const sortCountryBtn = document.getElementById("sort-country-btn");
 const countryFilter = document.getElementById("country-filter");
-const studentModal = document.getElementById("studentModal");
-const closeModalBtn = document.querySelector(".close");
-const modalStudentDetails = document.getElementById("modal-student-details");
 
 let students = [];
 
@@ -55,7 +52,11 @@ function updateTable(data) {
       student.dormOrApartment,
       student.enrollmentYear,
       student.graduationYear,
-      student.curator || "",
+      student.note2,
+      student.curator,
+      student.phoneCurator,
+      student.phoneStudent,
+      student.note3,
     ];
 
     cells.forEach((cellValue) => {
@@ -64,59 +65,9 @@ function updateTable(data) {
       row.appendChild(cell);
     });
 
-    // Обработчик клика на строку для отображения модального окна
-    row.addEventListener("click", () => {
-      showModal(student);
-    });
-
     tableBody.appendChild(row);
   });
 }
-
-// Функция для отображения данных в модальном окне
-function showModal(student) {
-  modalStudentDetails.innerHTML = `
-    <p><strong>ФИО:</strong> ${student.name}</p>
-    <p><strong>ФИО (англ):</strong> ${student.nameEn}</p>
-    <p><strong>Приказ:</strong> ${student.order}</p>
-    <p><strong>Дата приказа:</strong> ${student.orderDate}</p>
-    <p><strong>Год рождения:</strong> ${student.birthYear}</p>
-    <p><strong>Страна:</strong> ${student.country}</p>
-    <p><strong>Пол:</strong> ${student.gender}</p>
-    <p><strong>Серия и номер паспорта:</strong> ${student.passport}</p>
-    <p><strong>Группа:</strong> ${student.group}</p>
-    <p><strong>Факультет:</strong> ${student.faculty}</p>
-    <p><strong>Курс:</strong> ${student.course}</p>
-    <p><strong>Примечание:</strong> ${student.note}</p>
-    <p><strong>Форма обучения:</strong> ${student.educationForm}</p>
-    <p><strong>Разрешение на временное пребывание:</strong> ${student.residencePermission}</p>
-    <p><strong>День 1:</strong> ${student.day1}</p>
-    <p><strong>Месяц 1:</strong> ${student.month1}</p>
-    <p><strong>Год 1:</strong> ${student.year1}</p>
-    <p><strong>День 2:</strong> ${student.day2}</p>
-    <p><strong>Месяц 2:</strong> ${student.month2}</p>
-    <p><strong>Год 2:</strong> ${student.year2}</p>
-    <p><strong>Домашний адрес:</strong> ${student.homeAddress}</p>
-    <p><strong>Общежитие/квартира:</strong> ${student.dormOrApartment}</p>
-    <p><strong>Год поступления:</strong> ${student.enrollmentYear}</p>
-    <p><strong>Год окончания:</strong> ${student.graduationYear}</p>
-    <p><strong>Куратор:</strong> ${student.curator}</p>
-  `;
-
-  studentModal.style.display = "block";
-}
-
-// Закрытие модального окна
-closeModalBtn.addEventListener("click", () => {
-  studentModal.style.display = "none";
-});
-
-// Закрытие модального окна при нажатии клавиши Esc
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    studentModal.style.display = "none";
-  }
-});
 
 // Обработчик загрузки файла
 upload.addEventListener("change", (event) => {
@@ -148,7 +99,10 @@ upload.addEventListener("change", (event) => {
         birthYear: parseExcelDate(row["Год рождения"]),
         country: row["Страна"] || "",
         gender: row["Пол"] || "",
-        passport: row["Серия и номер паспорта"] || "",
+        passport: String(
+          row["Серия и номер паспорта, дата выдачи, срок действия"] || ""
+        ), // Преобразование в строку
+        // Проверьте формат ячейки в Excel. Убедитесь, что она установлена как "Текстовый", а не "Общий" или "Дата".
         group: row["Группа"] || "",
         faculty: row["Факультет"] || "",
         course: row["Курс"] || "",
@@ -165,11 +119,18 @@ upload.addEventListener("change", (event) => {
         dormOrApartment: row["Общежитие/квартира"] || "",
         enrollmentYear: row["Год поступления"] || "",
         graduationYear: row["Год окончания"] || "",
+        note2: row["Примечание"] || "",
         curator: row["Куратор"] || "", // Новый столбец
+        phoneCurator: row["Телефон куратора"] || "",
+        phoneStudent: row["Телефон студента"] || "",
+        note3: row["Примечание"] || "",
       }));
 
       console.log("Преобразованные данные:", students);
-
+      console.log(
+        "Данные паспорта:",
+        students.map((s) => s.passport)
+      );
       // Обновление таблицы на экране
       updateTable(students);
     } catch (error) {
