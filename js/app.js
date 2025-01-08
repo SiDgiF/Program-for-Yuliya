@@ -177,9 +177,8 @@ loadJsonBtn.addEventListener("click", () => {
         const jsonData = JSON.parse(e.target.result);
         students = jsonData;
 
-        // Сохраняем путь к выбранному файлу в localStorage
-        const filePath = URL.createObjectURL(file);
-        localStorage.setItem("jsonFilePath", filePath);
+        // Сохраняем данные в localStorage, а не путь
+        localStorage.setItem("studentsData", e.target.result);
 
         updateTable(students);
       } catch (error) {
@@ -191,28 +190,14 @@ loadJsonBtn.addEventListener("click", () => {
   });
 });
 
-// Автоматическая загрузка данных при загрузке страницы, если путь сохранен
+// Автоматическая загрузка данных при загрузке страницы, если данные сохранены
 document.addEventListener("DOMContentLoaded", () => {
-  const jsonFilePath = localStorage.getItem("jsonFilePath");
+  const studentsData = localStorage.getItem("studentsData");
 
-  if (jsonFilePath) {
-    // Если путь есть, загружаем данные
-    loadDataFromFile(jsonFilePath);
+  if (studentsData) {
+    students = JSON.parse(studentsData); // Восстановление данных
+    updateTable(students); // Обновление таблицы
   } else {
-    // Если пути нет, показываем уведомление
-    notification.style.display = "block";
+    notification.style.display = "block"; // Показать уведомление, если данных нет
   }
 });
-
-// Функция для загрузки данных из файла JSON
-function loadDataFromFile(filePath) {
-  fetch(filePath)
-    .then((response) => response.json())
-    .then((data) => {
-      students = data; // Сохраняем данные
-      updateTable(data); // Обновляем таблицу
-    })
-    .catch((error) => {
-      alert("Ошибка при загрузке данных: " + error.message);
-    });
-}
