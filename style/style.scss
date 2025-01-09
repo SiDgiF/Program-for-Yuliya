@@ -127,3 +127,92 @@ thead {
     display: block;
   }
 }
+
+// *Модальное окно
+
+/* Общий фон для модального окна */
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Контент модального окна */
+/* Модальное окно */
+/* Курсор pointer для ячеек с ФИО */
+#student-table tbody td:nth-child(2) {
+  cursor: help;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Контент модального окна */
+.modal-content {
+  background-color: #f9f9f9;
+  margin: 2% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 750px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: Arial, sans-serif;
+}
+
+/* Кнопка закрытия */
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #ff3333;
+}
+
+/* Стили для таблицы внутри модального окна */
+.modal-details-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.modal-details-item {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-details-item h3 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.modal-details-item p {
+  margin: 5px 0;
+  line-height: 1.4;
+  color: #555;
+}

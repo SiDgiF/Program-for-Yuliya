@@ -13,11 +13,6 @@
 <body>
   <div class="container">
     <h1>База данных студентов</h1>
-    <!-- <div class="actions">
-      <input type="file" id="upload" accept=".xls,.xlsx">
-      <button id="download-json">Сохранить данные в JSON</button>
-      <button id="load-json">Скачать данные в JSON</button>
-    </div> -->
 
     <div class="menu-container">
       <!-- Иконка шестеренки для открытия/закрытия меню -->
@@ -32,6 +27,16 @@
         <button id="load-json">Скачать данные в JSON</button>
       </div>
     </div>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Данные студента</h2>
+        <div id="modal-details" class="modal-details-table"></div>
+      </div>
+    </div>
+
 
 
     <table id="student-table">
