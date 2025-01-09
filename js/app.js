@@ -222,9 +222,14 @@ document.addEventListener("click", (event) => {
 });
 // Модальное окно
 // Находим элементы модального окна
+// Модальное окно
+// Находим элементы модального окна
 const modal = document.getElementById("modal");
 const modalDetails = document.getElementById("modal-details");
-const closeButton = document.querySelector(".close-button");
+const closeButton = document.getElementById("close-button");
+
+let currentStudentData = null; // Глобальная переменная для хранения данных текущего студента
+let isEditing = false; // Флаг, указывающий на режим редактирования
 
 // Открытие модального окна при клике на ФИО
 tableBody.addEventListener("click", (event) => {
@@ -234,6 +239,7 @@ tableBody.addEventListener("click", (event) => {
   if (cell.cellIndex === 1) {
     // Проверяем, что это ячейка с ФИО
     const studentData = students[row.rowIndex - 2]; // Получаем данные студента
+    currentStudentData = { ...studentData }; // Создаем копию данных для редактирования
     showModal(studentData);
   }
 });
@@ -285,66 +291,102 @@ function showModal(studentData) {
 `;
   modal.style.display = "block"; // Показываем модальное окно
 
-  const editButton = document.getElementById("edit-button");
-  const saveButton = document.getElementById("save-button");
-
-  // Обработчик нажатия на "Редактировать"
-  editButton.addEventListener("click", () => {
+  // Обновлённый обработчик "Редактировать"
+  document.getElementById("edit-button").addEventListener("click", () => {
     const password = prompt("Введите пароль для редактирования:");
     if (password === "1234") {
-      // Замените "your_password" на ваш пароль
       const editableFields = document.querySelectorAll(".editable");
       editableFields.forEach((field) => {
         field.contentEditable = "true";
       });
-      editButton.style.display = "none";
-      saveButton.style.display = "inline-block";
+      isEditing = true; // Устанавливаем флаг изменений
     } else {
       alert("Неверный пароль!");
     }
   });
 
-  // Обработчик нажатия на "Сохранить"
-  saveButton.addEventListener("click", () => {
-    const editableFields = document.querySelectorAll(".editable");
-    editableFields.forEach((field) => {
-      const key = field.dataset.key;
-      studentData[key] = field.textContent;
-    });
+  // Обработчик закрытия модального окна
+  function closeModal() {
+    if (isEditing) {
+      const confirmSave = confirm(
+        "Вы внесли изменения. Сохранить их перед закрытием?"
+      );
+      if (confirmSave) {
+        // Сохраняем изменения
+        const editableFields = document.querySelectorAll(".editable");
+        editableFields.forEach((field) => {
+          const key = field.dataset.key;
+          currentStudentData[key] = field.textContent;
+        });
 
-    // Сохранение изменений в массиве и localStorage
-    const rowIndex = students.findIndex(
-      (student) => student.name === studentData.name
-    );
-    if (rowIndex !== -1) {
-      students[rowIndex] = studentData;
-      localStorage.setItem("studentsData", JSON.stringify(students));
-      updateTable(students);
-      modal.style.display = "none";
+        // Сохранение изменений в массиве и localStorage
+        const rowIndex = students.findIndex(
+          (student) => student.name === currentStudentData.name
+        );
+        if (rowIndex !== -1) {
+          students[rowIndex] = currentStudentData;
+          localStorage.setItem("studentsData", JSON.stringify(students));
+          updateTable(students);
 
-      // Запрос на сохранение изменений в JSON
-      if (confirm("Сохранить изменения в файл JSON?")) {
-        const formattedJson = JSON.stringify(students, null, 2);
-        const blob = new Blob([formattedJson], { type: "application/json" });
-        saveAs(blob, "students_data.json");
+          // Предлагаем сохранить файл на локальный диск
+          saveToFile(students, "students.json");
+        }
+      } else {
+        // Если пользователь отказался, откатываем изменения
+        currentStudentData = null; // Сбрасываем изменения
       }
+    }
+    modal.style.display = "none"; // Закрываем окно
+    isEditing = false; // Сбрасываем флаг
+  }
+
+  // Функция для сохранения JSON-файла на локальный диск
+  function saveToFile(data, filename) {
+    const jsonStr = JSON.stringify(data, null, 2); // Преобразуем данные в формат JSON
+    const blob = new Blob([jsonStr], { type: "application/json" }); // Создаем Blob-объект
+    const url = URL.createObjectURL(blob); // Создаем URL для Blob
+
+    const a = document.createElement("a"); // Создаем временную ссылку
+    a.href = url;
+    a.download = filename; // Устанавливаем имя файла
+    document.body.appendChild(a); // Добавляем ссылку в DOM
+    a.click(); // "Кликаем" по ссылке для скачивания
+    document.body.removeChild(a); // Удаляем ссылку из DOM
+    URL.revokeObjectURL(url); // Освобождаем память
+  }
+
+  // Закрытие модального окна через кнопку
+  closeButton.addEventListener("click", closeModal);
+
+  // Закрытие модального окна при клике вне окна
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal();
     }
   });
 }
 
-// Закрытие модального окна остаётся без изменений
-closeButton.addEventListener("click", () => {
-  modal.style.display = "none";
-});
+// Обработчик для кнопки печати
+document.getElementById("print-button").addEventListener("click", () => {
+  const printContents = modalDetails.innerHTML;
+  const originalContents = document.body.innerHTML;
 
-window.addEventListener("click", (event) => {
-  if (event.target === modal) {
-    modal.style.display = "none";
-  }
-});
+  document.body.innerHTML = `
+    <html>
+      <head>
+        <title>Печать</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          .modal-details-item { margin-bottom: 20px; }
+          .modal-details-item h3 { font-size: 1.2rem; margin-bottom: 10px; }
+          .modal-details-item p { margin: 5px 0; }
+        </style>
+      </head>
+      <body>${printContents}</body>
+    </html>
+  `;
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    modal.style.display = "none";
-  }
+  window.print();
+  document.body.innerHTML = originalContents;
+  window.location.reload(); // Перезагрузка страницы для восстановления содержимого
 });

@@ -175,20 +175,6 @@ thead {
   font-family: Arial, sans-serif;
 }
 
-/* Кнопка закрытия */
-.close-button {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close-button:hover {
-  color: #ff3333;
-}
-
 /* Стили для таблицы внутри модального окна */
 .modal-details-table {
   display: grid;
@@ -215,4 +201,53 @@ thead {
   margin: 5px 0;
   line-height: 1.4;
   color: #555;
+}
+
+// Общий стиль для кнопок в заголовке модального окна
+.modal-header {
+  display: flex;
+  gap: 10px; // Расстояние между кнопками
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+
+  // // Кнопка редактирования
+  // .edit-icon {
+  //   font-size: 1.5rem;
+  //   background: none;
+  //   // border: none;
+  //   color: #333;
+  //   cursor: pointer;
+  //   transition: color 0.2s ease;
+
+  //   &:hover {
+  //     color: green;
+  //   }
+  // }
+
+  // // Кнопка закрытия
+  .close-icon {
+    font-size: 1rem;
+    //   background: none;
+    //   // border: none;
+    //   color: #333;
+    //   cursor: pointer;
+    //   transition: color 0.2s ease;
+
+    //   &:hover {
+    //     color: #ff3333;
+    //   }
+  }
+}
+
+// Адаптация для контента модального окна
+.modal-content {
+  position: relative;
+
+  // Заголовок с кнопками
+  .modal-header {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
 }

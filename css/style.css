@@ -155,20 +155,6 @@ thead td {
   font-family: Arial, sans-serif;
 }
 
-/* Кнопка закрытия */
-.close-button {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.close-button:hover {
-  color: #ff3333;
-}
-
 /* Стили для таблицы внутри модального окна */
 .modal-details-table {
   display: grid;
@@ -195,4 +181,24 @@ thead td {
   margin: 5px 0;
   line-height: 1.4;
   color: #555;
+}
+
+.modal-header {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.modal-header .close-icon {
+  font-size: 1rem;
+}
+
+.modal-content {
+  position: relative;
+}
+.modal-content .modal-header {
+  position: absolute;
+  top: 15px;
+  right: 20px;
 }
