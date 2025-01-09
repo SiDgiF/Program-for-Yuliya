@@ -201,3 +201,39 @@ document.addEventListener("DOMContentLoaded", () => {
     notification.style.display = "block"; // Показать уведомление, если данных нет
   }
 });
+
+// ********** Бургер
+
+// // Находим элементы
+// const settingsIcon = document.querySelector(".settings-icon");
+// const actionsMenu = document.querySelector(".actions");
+
+// // Добавляем обработчик для иконки шестеренки
+// settingsIcon.addEventListener("click", () => {
+//   // Переключаем класс для отображения/скрытия меню
+//   actionsMenu.classList.toggle("show");
+// });
+
+// // Закрыть меню, если кликнули в любое место, кроме меню
+// document.addEventListener("click", (event) => {
+//   if (!actionsMenu.contains(event.target) && event.target !== settingsIcon) {
+//     actionsMenu.classList.remove("show");
+//   }
+// });
+
+// Открытие/закрытие бургер-меню
+document.querySelector(".settings-icon").addEventListener("click", () => {
+  const menuContainer = document.querySelector(".menu-container");
+  menuContainer.classList.toggle("active");
+});
+
+// Закрытие меню при клике вне области меню
+document.addEventListener("click", (event) => {
+  const menuContainer = document.querySelector(".menu-container");
+  const isClickInside = menuContainer.contains(event.target);
+  const isIconClick = event.target.closest(".settings-icon");
+
+  if (!isClickInside && !isIconClick) {
+    menuContainer.classList.remove("active");
+  }
+});

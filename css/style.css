@@ -1,24 +1,111 @@
 @charset "UTF-8";
+/* === Таблица студентов === */
 #student-table {
-  width: 100%; /* Таблица занимает всю доступную ширину */
-  table-layout: auto; /* Автоматическое вычисление ширины столбцов */
+  width: 100%;
+  table-layout: auto;
   border-collapse: collapse;
 }
-
 #student-table th,
 #student-table td {
   padding: 8px;
   text-align: left;
   border: 1px solid #ddd;
-  max-height: 3em;
   white-space: normal;
 }
-
 #student-table th {
   background-color: #f4f4f4;
   font-weight: bold;
 }
-
 #student-table td:nth-child(27) {
   white-space: nowrap;
+}
+
+/* === Контейнер таблицы === */
+.container {
+  overflow: auto;
+  max-height: 98vh;
+  position: relative;
+  border: 1px solid #ccc;
+}
+.container table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.container table th,
+.container table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* === Фиксация шапки таблицы === */
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f9f9f9;
+  z-index: 4;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  border: 1px solid #ddd;
+  height: 60px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+thead tr:first-child th {
+  top: 0;
+}
+thead tr:nth-child(2) th {
+  top: 76px;
+  border: 1px solid #ccc;
+}
+thead th,
+thead td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* === Фиксация колонок === */
+#student-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: #f4f4f4;
+}
+#student-table td:nth-child(2) {
+  position: sticky;
+  left: 40px;
+  z-index: 2;
+  background-color: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+}
+
+/* === Настройка меню === */
+.menu-container {
+  position: relative;
+}
+.menu-container .settings-icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.menu-container .actions {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 10;
+}
+.menu-container .actions input,
+.menu-container .actions button {
+  margin: 5px 0;
+}
+.menu-container.active .actions {
+  display: block;
 }

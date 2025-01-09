@@ -6,16 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>База данных студентов</title>
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 
 <body>
   <div class="container">
     <h1>База данных студентов</h1>
-    <div class="actions">
+    <!-- <div class="actions">
       <input type="file" id="upload" accept=".xls,.xlsx">
       <button id="download-json">Сохранить данные в JSON</button>
       <button id="load-json">Скачать данные в JSON</button>
+    </div> -->
+
+    <div class="menu-container">
+      <!-- Иконка шестеренки для открытия/закрытия меню -->
+      <div class="settings-icon">
+        <i class="fa fa-cogs"></i>
+      </div>
+
+      <!-- Бургер-меню -->
+      <div class="actions">
+        <input type="file" id="upload" accept=".xls,.xlsx">
+        <button id="download-json">Сохранить данные в JSON</button>
+        <button id="load-json">Скачать данные в JSON</button>
+      </div>
     </div>
+
 
     <table id="student-table">
       <thead>

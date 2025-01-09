@@ -1,41 +1,129 @@
-// table {
-//   width: 100%;
-//   border-collapse: collapse;
-// }
-
-// th,
-// td {
-//   padding: 8px;
-//   border: 1px solid #ddd;
-//   text-align: left;
-// }
-
-// th {
-//   background-color: #f2f2f2;
-// }
-
+/* === Таблица студентов === */
 #student-table {
-  width: 100%; /* Таблица занимает всю доступную ширину */
-  table-layout: auto; /* Автоматическое вычисление ширины столбцов */
+  width: 100%;
+  table-layout: auto;
   border-collapse: collapse;
+
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    white-space: normal;
+  }
+
+  th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+
+  td:nth-child(27) {
+    white-space: nowrap;
+  }
 }
 
-#student-table th,
-#student-table td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd;
-  max-height: 3em;
-  // white-space: wrap; /* Отключение переноса текста */
-  white-space: normal;
+/* === Контейнер таблицы === */
+.container {
+  overflow: auto;
+  max-height: 98vh;
+  position: relative;
+  border: 1px solid #ccc;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+      white-space: nowrap;
+    }
+  }
 }
 
-#student-table th {
-  background-color: #f4f4f4;
-  font-weight: bold;
+/* === Фиксация шапки таблицы === */
+thead {
+  th {
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9;
+    z-index: 4; // Шапка таблицы выше всех
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid #ddd;
+    height: 60px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); // Тень с правой стороны
+  }
+
+  tr:first-child th {
+    top: 0;
+  }
+
+  tr:nth-child(2) th {
+    top: 76px; // Высота первой строки заголовка
+    border: 1px solid #ccc;
+  }
+
+  th,
+  td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
-#student-table td:nth-child(27) {
-  white-space: nowrap;
-  // border: 5px solid #3d2424;
+/* === Фиксация колонок === */
+#student-table {
+  // Первая колонка (№)
+  td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2; // Выше, чем остальные ячейки
+    background-color: #f4f4f4;
+  }
+
+  // Вторая колонка (ФИО)
+  td:nth-child(2) {
+    position: sticky;
+    left: 40px; // Ширина первой колонки
+    z-index: 2; // Ниже первой колонки, но выше остальных
+    background-color: #f4f4f4;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); // Тень с правой стороны
+    border: 1px solid #ccc;
+  }
+}
+
+/* === Настройка меню === */
+.menu-container {
+  position: relative;
+
+  .settings-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+
+  .actions {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 10;
+
+    input,
+    button {
+      margin: 5px 0;
+    }
+  }
+
+  &.active .actions {
+    display: block;
+  }
 }
