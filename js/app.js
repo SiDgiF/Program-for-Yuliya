@@ -242,62 +242,107 @@ tableBody.addEventListener("click", (event) => {
 // Функция для отображения модального окна с полной информацией
 function showModal(studentData) {
   modalDetails.innerHTML = `
-    <div class="modal-details-item">
-      <h3>Общие данные</h3>
-      <p><strong>ФИО:</strong> ${studentData.name}</p>
-      <p><strong>ФИО (англ):</strong> ${studentData.nameEn}</p>
-      <p><strong>Пол:</strong> ${studentData.gender}</p>
-      <p><strong>Год рождения:</strong> ${studentData.birthYear}</p>
-      <p><strong>Страна:</strong> ${studentData.country}</p>
-    </div>
-    <div class="modal-details-item">
-      <h3>Образование</h3>
-      <p><strong>Группа:</strong> ${studentData.group}</p>
-      <p><strong>Факультет:</strong> ${studentData.faculty}</p>
-      <p><strong>Курс:</strong> ${studentData.course}</p>
-      <p><strong>Примечания:</strong> ${studentData.note}</p>
-      <p><strong>Год поступления:</strong> ${studentData.enrollmentYear}</p>
-      <p><strong>Год окончания:</strong> ${studentData.graduationYear}</p>
-      <p><strong>Примечания:</strong> ${studentData.note2}</p>
-      <p><strong>Форма обучения:</strong> ${studentData.educationForm}</p>
-    </div>
-    <div class="modal-details-item">
-      <h3>Документы</h3>
-      <p><strong>Серия и номер паспорта:</strong> ${studentData.passport}</p>
-      <p><strong>Приказ:</strong> ${studentData.order}</p>
-      <p><strong>Дата приказа:</strong> ${studentData.orderDate}</p>
-    </div>
-    <div class="modal-details-item">
-      <h3>Контактные данные</h3>
-      <p><strong>Адрес:</strong> ${studentData.homeAddress}</p>
-      <p><strong>Общежитие/квартира:</strong> ${studentData.dormOrApartment}</p>
-      <p><strong>Телефон студента:</strong> ${studentData.phoneStudent}</p>
-      <p><strong>Примечания:</strong> ${studentData.note3}</p>
-      <p><strong>Куратор:</strong> ${studentData.curator}</p>
-      <p><strong>Телефон куратора:</strong> ${studentData.phoneCurator}</p>
-    </div>
-    <div class="modal-details-item">
-      <h3>Разрешение на временное пребывание</h3>
-      <p>${studentData.residencePermission}</p>
-      <p><strong>с:</strong> ${studentData.day1} ${studentData.month1} ${studentData.year1}</p>
-      <p><strong>с:</strong> ${studentData.day2} ${studentData.month2} ${studentData.year2}</p>
-  `;
+
+  <div class="modal-details-item">
+    <h3>Общие данные</h3>
+    <p><strong>ФИО:</strong> <span contenteditable="false" class="editable" data-key="name">${studentData.name}</span></p>
+    <p><strong>ФИО (англ):</strong> <span contenteditable="false" class="editable" data-key="nameEn">${studentData.nameEn}</span></p>
+    <p><strong>Пол:</strong> <span contenteditable="false" class="editable" data-key="gender">${studentData.gender}</span></p>
+    <p><strong>Год рождения:</strong> <span contenteditable="false" class="editable" data-key="birthYear">${studentData.birthYear}</span></p>
+    <p><strong>Страна:</strong> <span contenteditable="false" class="editable" data-key="country">${studentData.country}</span></p>
+  </div>
+  <div class="modal-details-item">
+    <h3>Образование</h3>
+    <p><strong>Группа:</strong> <span contenteditable="false" class="editable" data-key="group">${studentData.group}</span></p>
+    <p><strong>Факультет:</strong> <span contenteditable="false" class="editable" data-key="faculty">${studentData.faculty}</span></p>
+    <p><strong>Курс:</strong> <span contenteditable="false" class="editable" data-key="course">${studentData.course}</span></p>
+    <p><strong>Примечания:</strong> <span contenteditable="false" class="editable" data-key="note">${studentData.note}</span></p>
+    <p><strong>Год поступления:</strong> <span contenteditable="false" class="editable" data-key="enrollmentYear">${studentData.enrollmentYear}</span></p>
+    <p><strong>Год окончания:</strong> <span contenteditable="false" class="editable" data-key="graduationYear">${studentData.graduationYear}</span></p>
+    <p><strong>Примечания:</strong> <span contenteditable="false" class="editable" data-key="note2">${studentData.note2}</span></p>
+    <p><strong>Форма обучения:</strong> <span contenteditable="false" class="editable" data-key="educationForm">${studentData.educationForm}</span></p>
+  </div>
+  <div class="modal-details-item">
+    <h3>Документы</h3>
+    <p><strong>Серия и номер паспорта:</strong> <span contenteditable="false" class="editable" data-key="passport">${studentData.passport}</span></p>
+    <p><strong>Приказ:</strong> <span contenteditable="false" class="editable" data-key="order">${studentData.order}</span></p>
+    <p><strong>Дата приказа:</strong> <span contenteditable="false" class="editable" data-key="orderDate">${studentData.orderDate}</span></p>
+  </div>
+  <div class="modal-details-item">
+    <h3>Контактные данные</h3>
+    <p><strong>Адрес:</strong> <span contenteditable="false" class="editable" data-key="homeAddress">${studentData.homeAddress}</span></p>
+    <p><strong>Общежитие/квартира:</strong> <span contenteditable="false" class="editable" data-key="dormOrApartment">${studentData.dormOrApartment}</span></p>
+    <p><strong>Телефон студента:</strong> <span contenteditable="false" class="editable" data-key="phoneStudent">${studentData.phoneStudent}</span></p>
+    <p><strong>Примечания:</strong> <span contenteditable="false" class="editable" data-key="note3">${studentData.note3}</span></p>
+    <p><strong>Куратор:</strong> <span contenteditable="false" class="editable" data-key="curator">${studentData.curator}</span></p>
+    <p><strong>Телефон куратора:</strong> <span contenteditable="false" class="editable" data-key="phoneCurator">${studentData.phoneCurator}</span></p>
+  </div>
+  <div class="modal-details-item">
+    <h3>Разрешение на временное пребывание</h3>
+    <p><span contenteditable="false" class="editable" data-key="residencePermission">${studentData.residencePermission}</span></p>
+    <p><strong>с:</strong> <span contenteditable="false" class="editable" data-key="day1">${studentData.day1}</span> <span contenteditable="false" class="editable" data-key="month1">${studentData.month1}</span> <span contenteditable="false" class="editable" data-key="year1">${studentData.year1}</span></p>
+    <p><strong>по:</strong> <span contenteditable="false" class="editable" data-key="day2">${studentData.day2}</span> <span contenteditable="false" class="editable" data-key="month2">${studentData.month2}</span> <span contenteditable="false" class="editable" data-key="year2">${studentData.year2}</span></p>
+`;
   modal.style.display = "block"; // Показываем модальное окно
+
+  const editButton = document.getElementById("edit-button");
+  const saveButton = document.getElementById("save-button");
+
+  // Обработчик нажатия на "Редактировать"
+  editButton.addEventListener("click", () => {
+    const password = prompt("Введите пароль для редактирования:");
+    if (password === "1234") {
+      // Замените "your_password" на ваш пароль
+      const editableFields = document.querySelectorAll(".editable");
+      editableFields.forEach((field) => {
+        field.contentEditable = "true";
+      });
+      editButton.style.display = "none";
+      saveButton.style.display = "inline-block";
+    } else {
+      alert("Неверный пароль!");
+    }
+  });
+
+  // Обработчик нажатия на "Сохранить"
+  saveButton.addEventListener("click", () => {
+    const editableFields = document.querySelectorAll(".editable");
+    editableFields.forEach((field) => {
+      const key = field.dataset.key;
+      studentData[key] = field.textContent;
+    });
+
+    // Сохранение изменений в массиве и localStorage
+    const rowIndex = students.findIndex(
+      (student) => student.name === studentData.name
+    );
+    if (rowIndex !== -1) {
+      students[rowIndex] = studentData;
+      localStorage.setItem("studentsData", JSON.stringify(students));
+      updateTable(students);
+      modal.style.display = "none";
+
+      // Запрос на сохранение изменений в JSON
+      if (confirm("Сохранить изменения в файл JSON?")) {
+        const formattedJson = JSON.stringify(students, null, 2);
+        const blob = new Blob([formattedJson], { type: "application/json" });
+        saveAs(blob, "students_data.json");
+      }
+    }
+  });
 }
 
-// Закрытие модального окна
+// Закрытие модального окна остаётся без изменений
 closeButton.addEventListener("click", () => {
   modal.style.display = "none";
 });
 
-// Закрытие при клике вне модального окна
 window.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal.style.display = "none";
   }
 });
 
-// Закрытие по нажатию ESC
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     modal.style.display = "none";
