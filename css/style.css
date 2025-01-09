@@ -202,3 +202,9 @@ thead td {
   top: 15px;
   right: 20px;
 }
+
+.country-flag {
+  width: 35px; /* Размер флага */
+  height: auto;
+  margin-left: 10px;
+}

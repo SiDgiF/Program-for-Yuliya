@@ -211,32 +211,8 @@ thead {
   align-items: center;
   margin-bottom: 10px;
 
-  // // Кнопка редактирования
-  // .edit-icon {
-  //   font-size: 1.5rem;
-  //   background: none;
-  //   // border: none;
-  //   color: #333;
-  //   cursor: pointer;
-  //   transition: color 0.2s ease;
-
-  //   &:hover {
-  //     color: green;
-  //   }
-  // }
-
-  // // Кнопка закрытия
   .close-icon {
     font-size: 1rem;
-    //   background: none;
-    //   // border: none;
-    //   color: #333;
-    //   cursor: pointer;
-    //   transition: color 0.2s ease;
-
-    //   &:hover {
-    //     color: #ff3333;
-    //   }
   }
 }
 
@@ -250,4 +226,10 @@ thead {
     top: 15px;
     right: 20px;
   }
+}
+
+.country-flag {
+  width: 35px; /* Размер флага */
+  height: auto;
+  margin-left: 10px;
 }
