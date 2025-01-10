@@ -1,21 +1,22 @@
 // ******************** ИНИЦИАЛИЗАЦИЯ ********************
 
 // Элементы DOM
-const upload = document.getElementById("upload");
-const downloadJsonBtn = document.getElementById("download-json");
-const loadJsonBtn = document.getElementById("load-json");
-const tableBody = document
+export const upload = document.getElementById("upload");
+export const downloadJsonBtn = document.getElementById("download-json");
+export const loadJsonBtn = document.getElementById("load-json");
+export const tableBody = document
   .getElementById("student-table")
   .querySelector("tbody");
-const notification = document.getElementById("notification"); // Элемент для уведомления
-const modal = document.getElementById("modal");
-const modalDetails = document.getElementById("modal-details");
-const closeButton = document.getElementById("close-button");
+export const notification = document.getElementById("notification"); // Элемент для уведомления
+export const modal = document.getElementById("modal");
+export const modalDetails = document.getElementById("modal-details");
+export const closeButton = document.getElementById("close-button");
+export const saveButton = document.getElementById("save-button");
 
 // Глобальные переменные
-let students = []; // Массив для хранения данных студентов
-let currentStudentData = null; // Данные текущего студента для модального окна
-let isEditing = false; // Флаг режима редактирования
+export let students = []; // Массив для хранения данных студентов
+export let currentStudentData = null; // Данные текущего студента для модального окна
+export let isEditing = false; // Флаг режима редактирования
 
 // ******************** УТИЛИТЫ ********************
 
@@ -34,44 +35,12 @@ function parseExcelDate(excelDate) {
   }
   return excelDate || "";
 }
-
-/**
- * Получение URL изображения флага по названию страны
- * @param {string} country - Название страны
- * @returns {string} - URL изображения флага
- */
-function getFlagImage(country) {
-  const countryCodes = {
-    Азербайджан: "az",
-    "Арабская Республика Египет": "eg",
-    Беларусь: "by",
-    Венесуэла: "ve",
-    Вьетнам: "vn",
-    Гана: "gh",
-    Зимбабве: "zw",
-    Израиль: "il",
-    Иордания: "jo",
-    "Йеменская Республика": "ye",
-    Казахстан: "kz",
-    Китай: "cn",
-    Нигерия: "ng",
-    Россия: "ru",
-    Сирия: "sy",
-    Судан: "sd",
-    Таджикистан: "tj",
-    Туркменистан: "tm",
-  };
-
-  const countryCode = countryCodes[country];
-  return countryCode ? `https://flagcdn.com/w320/${countryCode}.png` : "";
-}
-
 /**
  * Сохранение данных в файл JSON
  * @param {Array} data - Данные для сохранения
  * @param {string} filename - Имя файла
  */
-function saveToFile(data, filename) {
+export function saveToFile(data, filename) {
   const jsonStr = JSON.stringify(data, null, 2);
   const blob = new Blob([jsonStr], { type: "application/json" });
   const url = URL.createObjectURL(blob);
@@ -84,13 +53,23 @@ function saveToFile(data, filename) {
   URL.revokeObjectURL(url);
 }
 
+// Создаём функцию для проверки пароля
+export function checkPassword(callback) {
+  const password = prompt("Введите пароль:");
+  if (password === "1234") {
+    callback(); // Вызываем переданную функцию, если пароль верный
+  } else {
+    alert("Неверный пароль!");
+  }
+}
+
 // ******************** РАБОТА С ТАБЛИЦЕЙ ********************
 
 /**
  * Обновление таблицы с данными студентов
  * @param {Array} data - Данные для отображения
  */
-function updateTable(data) {
+export function updateTable(data) {
   tableBody.innerHTML = "";
   data.forEach((student, index) => {
     const row = document.createElement("tr");
@@ -283,322 +262,4 @@ document.addEventListener("click", (event) => {
   if (!isClickInside && !isIconClick) {
     menuContainer.classList.remove("active");
   }
-});
-// Модальное окно
-// Находим элементы модального окна
-
-// Открытие модального окна при клике на ФИО
-tableBody.addEventListener("click", (event) => {
-  const cell = event.target;
-  const row = cell.parentElement;
-
-  if (cell.cellIndex === 1) {
-    // Проверяем, что это ячейка с ФИО
-    const studentData = students[row.rowIndex - 2]; // Получаем данные студента
-    currentStudentData = { ...studentData }; // Создаем копию данных для редактирования
-    showModal(studentData);
-  }
-});
-
-// Функция для отображения модального окна с полной информацией
-function showModal(studentData) {
-  const country = studentData.country;
-  const flagUrl = getFlagImage(country);
-
-  modalDetails.innerHTML = `
-
-  <div class="modal-details-item">
-    <h3>Общие данные</h3>
-    <p><strong>ФИО:</strong> <span contenteditable="false" class="editable" data-key="name">${
-      studentData.name
-    }</span></p>
-    <p><strong>ФИО (англ):</strong> <span contenteditable="false" class="editable" data-key="nameEn">${
-      studentData.nameEn
-    }</span></p>
-    <p><strong>Пол:</strong> <span contenteditable="false" class="editable" data-key="gender">${
-      studentData.gender
-    }</span></p>
-    <p><strong>Год рождения:</strong> <span contenteditable="false" class="editable" data-key="birthYear">${
-      studentData.birthYear
-    }</span></p>
-       <p><strong>Страна:</strong>
-        <span contenteditable="false" class="editable" data-key="country">${country}</span>
-        ${
-          flagUrl
-            ? `<img src="${flagUrl}" alt="Flag" class="country-flag" />`
-            : ""
-        }
-      </p>
-    </div>
-  </div>
-  <div class="modal-details-item">
-    <h3>Образование</h3>
-    <p><strong>Группа:</strong> <span contenteditable="false" class="editable" data-key="group">${
-      studentData.group
-    }</span></p>
-    <p><strong>Факультет:</strong> <span contenteditable="false" class="editable" data-key="faculty">${
-      studentData.faculty
-    }</span></p>
-    <p><strong>Курс:</strong> <span contenteditable="false" class="editable" data-key="course">${
-      studentData.course
-    }</span></p>
-    <p><strong>Примечания:</strong> <span contenteditable="false" class="editable" data-key="note">${
-      studentData.note
-    }</span></p>
-    <p><strong>Год поступления:</strong> <span contenteditable="false" class="editable" data-key="enrollmentYear">${
-      studentData.enrollmentYear
-    }</span></p>
-    <p><strong>Год окончания:</strong> <span contenteditable="false" class="editable" data-key="graduationYear">${
-      studentData.graduationYear
-    }</span></p>
-    <p><strong>Примечания:</strong> <span contenteditable="false" class="editable" data-key="note2">${
-      studentData.note2
-    }</span></p>
-    <p><strong>Форма обучения:</strong> <span contenteditable="false" class="editable" data-key="educationForm">${
-      studentData.educationForm
-    }</span></p>
-  </div>
-  <div class="modal-details-item">
-    <h3>Документы</h3>
-    <p><strong>Серия и номер паспорта:</strong> <span contenteditable="false" class="editable" data-key="passport">${
-      studentData.passport
-    }</span></p>
-    <p><strong>Приказ:</strong> <span contenteditable="false" class="editable" data-key="order">${
-      studentData.order
-    }</span></p>
-    <p><strong>Дата приказа:</strong> <span contenteditable="false" class="editable" data-key="orderDate">${
-      studentData.orderDate
-    }</span></p>
-  </div>
-  <div class="modal-details-item">
-    <h3>Контактные данные</h3>
-    <p><strong>Адрес:</strong> <span contenteditable="false" class="editable" data-key="homeAddress">${
-      studentData.homeAddress
-    }</span></p>
-    <p><strong>Общежитие/квартира:</strong> <span contenteditable="false" class="editable" data-key="dormOrApartment">${
-      studentData.dormOrApartment
-    }</span></p>
-    <p><strong>Телефон студента:</strong> <span contenteditable="false" class="editable" data-key="phoneStudent">${
-      studentData.phoneStudent
-    }</span></p>
-    <p><strong>Примечания:</strong> <span contenteditable="false" class="editable" data-key="note3">${
-      studentData.note3
-    }</span></p>
-    <p><strong>Куратор:</strong> <span contenteditable="false" class="editable" data-key="curator">${
-      studentData.curator
-    }</span></p>
-    <p><strong>Телефон куратора:</strong> <span contenteditable="false" class="editable" data-key="phoneCurator">${
-      studentData.phoneCurator
-    }</span></p>
-  </div>
-  <div class="modal-details-item">
-    <h3>Разрешение на временное пребывание</h3>
-    <p><span contenteditable="false" class="editable" data-key="residencePermission">${
-      studentData.residencePermission
-    }</span></p>
-    <p><strong>с:</strong> <span contenteditable="false" class="editable" data-key="day1">${
-      studentData.day1
-    }</span> <span contenteditable="false" class="editable" data-key="month1">${
-    studentData.month1
-  }</span> <span contenteditable="false" class="editable" data-key="year1">${
-    studentData.year1
-  }</span></p>
-    <p><strong>по:</strong> <span contenteditable="false" class="editable" data-key="day2">${
-      studentData.day2
-    }</span> <span contenteditable="false" class="editable" data-key="month2">${
-    studentData.month2
-  }</span> <span contenteditable="false" class="editable" data-key="year2">${
-    studentData.year2
-  }</span></p>
-`;
-  modal.style.display = "block"; // Показываем модальное окно
-
-  // Обновлённый обработчик "Редактировать"
-  document.getElementById("edit-button").addEventListener("click", () => {
-    const password = prompt("Введите пароль для редактирования:");
-    if (password === "1234") {
-      const editableFields = document.querySelectorAll(".editable");
-      editableFields.forEach((field) => {
-        field.contentEditable = "true";
-        field.classList.add("editing"); // Добавляем класс для подсветки
-      });
-      isEditing = true; // Устанавливаем флаг изменений
-    } else {
-      alert("Неверный пароль!");
-    }
-  });
-
-  // Обработчик закрытия модального окна
-  function closeModal() {
-    if (isEditing) {
-      const confirmSave = confirm(
-        "Вы внесли изменения. Сохранить их перед закрытием?"
-      );
-      if (confirmSave) {
-        // Сохраняем изменения
-        const editableFields = document.querySelectorAll(".editable");
-        editableFields.forEach((field) => {
-          const key = field.dataset.key;
-          currentStudentData[key] = field.textContent;
-        });
-
-        // Сохранение изменений в массиве и localStorage
-        const rowIndex = students.findIndex(
-          (student) => student.name === currentStudentData.name
-        );
-        if (rowIndex !== -1) {
-          students[rowIndex] = currentStudentData;
-          localStorage.setItem("studentsData", JSON.stringify(students));
-          updateTable(students);
-
-          // Предлагаем сохранить файл на локальный диск
-          saveToFile(students, "students.json");
-        }
-      } else {
-        // Если пользователь отказался, откатываем изменения
-        currentStudentData = null; // Сбрасываем изменения
-      }
-    }
-    modal.style.display = "none"; // Закрываем окно
-    isEditing = false; // Сбрасываем флаг
-  }
-
-  // Функция для сохранения JSON-файла на локальный диск
-  function saveToFile(data, filename) {
-    const jsonStr = JSON.stringify(data, null, 2); // Преобразуем данные в формат JSON
-    const blob = new Blob([jsonStr], { type: "application/json" }); // Создаем Blob-объект
-    const url = URL.createObjectURL(blob); // Создаем URL для Blob
-
-    const a = document.createElement("a"); // Создаем временную ссылку
-    a.href = url;
-    a.download = filename; // Устанавливаем имя файла
-    document.body.appendChild(a); // Добавляем ссылку в DOM
-    a.click(); // "Кликаем" по ссылке для скачивания
-    document.body.removeChild(a); // Удаляем ссылку из DOM
-    URL.revokeObjectURL(url); // Освобождаем память
-  }
-
-  // Закрытие модального окна через кнопку
-  closeButton.addEventListener("click", closeModal);
-
-  // Закрытие модального окна при клике вне окна
-  window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      closeModal();
-    }
-  });
-}
-
-// Обработчик для кнопки печати
-document.getElementById("print-button").addEventListener("click", () => {
-  const printContents = modalDetails.innerHTML;
-  const originalContents = document.body.innerHTML;
-
-  document.body.innerHTML = `
-    <html>
-      <head>
-        <title>Печать</title>
-        <style>
-          body { font-family: Arial, sans-serif; margin: 20px; }
-          .modal-details-item { margin-bottom: 20px; }
-          .modal-details-item h3 { font-size: 1.2rem; margin-bottom: 10px; }
-          .modal-details-item p { margin: 5px 0; }
-        </style>
-      </head>
-      <body>${printContents}</body>
-    </html>
-  `;
-
-  window.print();
-  document.body.innerHTML = originalContents;
-  window.location.reload(); // Перезагрузка страницы для восстановления содержимого
-});
-
-// ******************** ДОБАВИТЬ НОВОГО СТУДЕНТА ********************
-// Слушатель на иконку добавления нового студента
-document.querySelector(".fa-user-circle").addEventListener("click", () => {
-  showModalForNewStudent();
-});
-
-// Функция для отображения модального окна для нового студента
-function showModalForNewStudent() {
-  currentStudentData = {}; // Новый объект для данных студента
-
-  modalDetails.innerHTML = `
-
-  <div class="modal-details-item">
-    <h3>Общие данные</h3>
-    <p><strong>ФИО:</strong> <span contenteditable="true" class="editable editing" data-key="name"></span></p>
-    <p><strong>ФИО (англ):</strong> <span contenteditable="true" class="editable editing" data-key="nameEn"></span></p>
-    <p><strong>Пол:</strong> <span contenteditable="true" class="editable editing" data-key="gender"></span></p>
-    <p><strong>Год рождения:</strong> <span contenteditable="true" class="editable editing" data-key="birthYear"></span></p>
-    <p><strong>Страна:</strong><span contenteditable="true" class="editable editing" data-key="country"></span></p>
-    </div>
-  </div>
-  <div class="modal-details-item">
-    <h3>Образование</h3>
-    <p><strong>Группа:</strong> <span contenteditable="true" class="editable editing" data-key="group"></span></p>
-    <p><strong>Факультет:</strong> <span contenteditable="true" class="editable editing" data-key="faculty"></span></p>
-    <p><strong>Курс:</strong> <span contenteditable="true" class="editable editing" data-key="course"></span></p>
-    <p><strong>Примечания:</strong> <span contenteditable="true" class="editable editing" data-key="note"></span></p>
-    <p><strong>Год поступления:</strong> <span contenteditable="true" class="editable editing" data-key="enrollmentYear"></span></p>
-    <p><strong>Год окончания:</strong> <span contenteditable="true" class="editable editing" data-key="graduationYear"></span></p>
-    <p><strong>Примечания:</strong> <span contenteditable="true" class="editable editing" data-key="note2"></span></p>
-    <p><strong>Форма обучения:</strong> <span contenteditable="true" class="editable editing" data-key="educationForm"></span></p>
-  </div>
-  <div class="modal-details-item">
-    <h3>Документы</h3>
-    <p><strong>Серия и номер паспорта:</strong> <span contenteditable="true" class="editable editing" data-key="passport"></span></p>
-    <p><strong>Приказ:</strong> <span contenteditable="true" class="editable editing" data-key="order"></span></p>
-    <p><strong>Дата приказа:</strong> <span contenteditable="true" class="editable editing" data-key="orderDate"></span></p>
-  </div>
-  <div class="modal-details-item">
-    <h3>Контактные данные</h3>
-    <p><strong>Адрес:</strong> <span contenteditable="true" class="editable editing" data-key="homeAddress"></span></p>
-    <p><strong>Общежитие/квартира:</strong> <span contenteditable="true" class="editable editing" data-key="dormOrApartment"></span></p>
-    <p><strong>Телефон студента:</strong> <span contenteditable="true" class="editable editing" data-key="phoneStudent"></span></p>
-    <p><strong>Примечания:</strong> <span contenteditable="true" class="editable editing" data-key="note3"></span></p>
-    <p><strong>Куратор:</strong> <span contenteditable="true" class="editable editing" data-key="curator"></span></p>
-    <p><strong>Телефон куратора:</strong> <span contenteditable="true" class="editable editing" data-key="phoneCurator"></span></p>
-  </div>
-  <div class="modal-details-item">
-    <h3>Разрешение на временное пребывание</h3>
-    <p><span contenteditable="true" class="editable editing" data-key="residencePermission"></span></p>
-    <p><strong>с: </strong> <span contenteditable="true" class="editable editing" data-key="day1">&nbsp;</span> <span contenteditable="true" class="editable editing" data-key="month1">&nbsp;</span><span contenteditable="true" class="editable editing" data-key="year1">&nbsp;</span></p>
-    <p><strong>по: </strong> <span contenteditable="true" class="editable editing" data-key="day2">&nbsp;</span> <span contenteditable="true" class="editable editing" data-key="month2">&nbsp;</span><span contenteditable="true" class="editable editing" data-key="year2">&nbsp;</span></p>
-`;
-
-  modal.style.display = "block"; // Показываем модальное окно
-  isEditing = true; // Устанавливаем флаг редактирования
-}
-
-// Обработчик закрытия модального окна
-closeButton.addEventListener("click", () => {
-  if (isEditing) {
-    const confirmSave = confirm(
-      "Вы внесли изменения. Сохранить нового студента перед закрытием?"
-    );
-
-    if (confirmSave) {
-      // Сохраняем нового студента
-      const editableFields = document.querySelectorAll(".editable");
-      editableFields.forEach((field) => {
-        const key = field.dataset.key;
-        currentStudentData[key] = field.textContent.trim();
-      });
-
-      // Добавляем нового студента в массив и localStorage
-      students.push(currentStudentData);
-      localStorage.setItem("studentsData", JSON.stringify(students));
-      updateTable(students);
-
-      // Предлагаем сохранить файл
-      saveToFile(students, "students.json");
-    }
-  }
-
-  // Закрываем окно и сбрасываем состояние
-  modal.style.display = "none";
-  currentStudentData = null;
-  isEditing = false;
 });

@@ -185,3 +185,7 @@ thead td {
   border-radius: 5px; /* Скругление углов */
   padding: 1px 20px; /* Отступы для визуального эффекта */
 }
+
+.editable {
+  margin-right: 8px; /* Расстояние между ячейками */
+}
