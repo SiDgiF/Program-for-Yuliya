@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* === Таблица студентов === */
 #student-table {
   width: 100%;
   table-layout: auto;
@@ -20,7 +19,6 @@
   white-space: nowrap;
 }
 
-/* === Контейнер таблицы === */
 .container {
   overflow: auto;
   max-height: 98vh;
@@ -40,7 +38,6 @@
   white-space: nowrap;
 }
 
-/* === Фиксация шапки таблицы === */
 thead th {
   position: sticky;
   top: 0;
@@ -65,7 +62,6 @@ thead td {
   text-overflow: ellipsis;
 }
 
-/* === Фиксация колонок === */
 #student-table td:first-child {
   position: sticky;
   left: 0;
@@ -81,20 +77,27 @@ thead td {
   border: 1px solid #ccc;
 }
 
-/* === Настройка меню === */
 .menu-container {
   position: relative;
+  padding-left: 50px;
+}
+.menu-container .fa {
+  cursor: pointer;
+}
+.menu-container .far {
+  cursor: pointer;
 }
 .menu-container .settings-icon {
+  display: flex;
+  justify-content: space-between;
   font-size: 24px;
-  cursor: pointer;
   margin-bottom: 10px;
 }
 .menu-container .actions {
   display: none;
   position: absolute;
   top: 40px;
-  left: 0;
+  right: 0;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -110,26 +113,6 @@ thead td {
   display: block;
 }
 
-/* Общий фон для модального окна */
-.modal {
-  display: none; /* Скрыто по умолчанию */
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-/* Контент модального окна */
-/* Модальное окно */
-/* Курсор pointer для ячеек с ФИО */
-#student-table tbody td:nth-child(2) {
-  cursor: help;
-}
-
 .modal {
   display: none;
   position: fixed;
@@ -139,10 +122,8 @@ thead td {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
 }
-
-/* Контент модального окна */
 .modal-content {
   background-color: #f9f9f9;
   margin: 2% auto;
@@ -154,21 +135,27 @@ thead td {
   position: relative;
   font-family: Arial, sans-serif;
 }
-
-/* Стили для таблицы внутри модального окна */
+.modal-content .modal-header {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.modal-content .modal-header .close-icon {
+  font-size: 1rem;
+}
 .modal-details-table {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 15px;
 }
-
 .modal-details-item {
   background: #ffffff;
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .modal-details-item h3 {
   margin: 0 0 10px;
   font-size: 1.1rem;
@@ -176,35 +163,25 @@ thead td {
   border-bottom: 1px solid #ddd;
   padding-bottom: 5px;
 }
-
 .modal-details-item p {
   margin: 5px 0;
   line-height: 1.4;
   color: #555;
 }
 
-.modal-header {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.modal-header .close-icon {
-  font-size: 1rem;
-}
-
-.modal-content {
-  position: relative;
-}
-.modal-content .modal-header {
-  position: absolute;
-  top: 15px;
-  right: 20px;
+#student-table tbody td:nth-child(2) {
+  cursor: help;
 }
 
 .country-flag {
-  width: 35px; /* Размер флага */
+  width: 35px;
   height: auto;
   margin-left: 10px;
+}
+
+.editing {
+  background-color: #eee8e8; /* Светло-серый фон */
+  border: none; /* Без границы */
+  border-radius: 5px; /* Скругление углов */
+  padding: 1px 20px; /* Отступы для визуального эффекта */
 }

@@ -1,4 +1,4 @@
-/* === Таблица студентов === */
+// === Таблица студентов ===
 #student-table {
   width: 100%;
   table-layout: auto;
@@ -22,7 +22,7 @@
   }
 }
 
-/* === Контейнер таблицы === */
+// === Контейнер таблицы ===
 .container {
   overflow: auto;
   max-height: 98vh;
@@ -44,7 +44,7 @@
   }
 }
 
-/* === Фиксация шапки таблицы === */
+// === Фиксация шапки таблицы ===
 thead {
   th {
     position: sticky;
@@ -74,7 +74,7 @@ thead {
   }
 }
 
-/* === Фиксация колонок === */
+// === Фиксация колонок ===
 #student-table {
   // Первая колонка (№)
   td:first-child {
@@ -95,13 +95,22 @@ thead {
   }
 }
 
-/* === Настройка меню === */
+// === Настройка меню ===
 .menu-container {
   position: relative;
 
-  .settings-icon {
-    font-size: 24px;
+  padding-left: 50px;
+  .fa {
     cursor: pointer;
+  }
+  .far {
+    cursor: pointer;
+  }
+  .settings-icon {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+
     margin-bottom: 10px;
   }
 
@@ -109,7 +118,7 @@ thead {
     display: none;
     position: absolute;
     top: 40px;
-    left: 0;
+    right: 0;
     background: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -128,11 +137,9 @@ thead {
   }
 }
 
-// *Модальное окно
-
-/* Общий фон для модального окна */
+// === Модальное окно ===
 .modal {
-  display: none; /* Скрыто по умолчанию */
+  display: none; // Скрыто по умолчанию
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -141,95 +148,80 @@ thead {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
+
+  &-content {
+    background-color: #f9f9f9;
+    margin: 2% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 750px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    font-family: Arial, sans-serif;
+
+    // Заголовок с кнопками
+    .modal-header {
+      display: flex;
+      gap: 10px; // Расстояние между кнопками
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .close-icon {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  // Стили для таблицы внутри модального окна
+  &-details-table {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  &-details-item {
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    p {
+      margin: 5px 0;
+      line-height: 1.4;
+      color: #555;
+    }
+  }
 }
 
-/* Контент модального окна */
-/* Модальное окно */
-/* Курсор pointer для ячеек с ФИО */
+// === Дополнительные стили ===
 #student-table tbody td:nth-child(2) {
   cursor: help;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-/* Контент модального окна */
-.modal-content {
-  background-color: #f9f9f9;
-  margin: 2% auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 750px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  position: relative;
-  font-family: Arial, sans-serif;
-}
-
-/* Стили для таблицы внутри модального окна */
-.modal-details-table {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-}
-
-.modal-details-item {
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.modal-details-item h3 {
-  margin: 0 0 10px;
-  font-size: 1.1rem;
-  color: #333;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-}
-
-.modal-details-item p {
-  margin: 5px 0;
-  line-height: 1.4;
-  color: #555;
-}
-
-// Общий стиль для кнопок в заголовке модального окна
-.modal-header {
-  display: flex;
-  gap: 10px; // Расстояние между кнопками
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 10px;
-
-  .close-icon {
-    font-size: 1rem;
-  }
-}
-
-// Адаптация для контента модального окна
-.modal-content {
-  position: relative;
-
-  // Заголовок с кнопками
-  .modal-header {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-  }
-}
-
 .country-flag {
-  width: 35px; /* Размер флага */
+  width: 35px; // Размер флага
   height: auto;
   margin-left: 10px;
+}
+// подсветка полей редактирования
+
+// .editing {
+//   background-color: #e0ddb8;
+//   border: 1px solid #f1c40f;
+// }
+.editing {
+  background-color: #eee8e8; /* Светло-серый фон */
+  border: none; /* Без границы */
+  border-radius: 5px; /* Скругление углов */
+  padding: 1px 20px; /* Отступы для визуального эффекта */
 }
