@@ -148,6 +148,8 @@ function showModalForNewStudent() {
       alert("Данные успешно сохранены!");
     } else {
       alert("Сохранение отменено.");
+      // Закрываем модальное окно
+      modal.style.display = "none";
     }
   };
 }

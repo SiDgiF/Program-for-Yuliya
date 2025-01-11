@@ -77,26 +77,31 @@ thead td {
   border: 1px solid #ccc;
 }
 
+.settings-icon {
+  display: flex;
+  gap: 100px;
+  font-size: 16px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.settings-icon .fa {
+  cursor: pointer;
+}
+.settings-icon .icon-text {
+  font-weight: normal; /* Отменяем жирность текста */
+}
+.settings-icon .far {
+  cursor: pointer;
+}
+
 .menu-container {
   position: relative;
   padding-left: 50px;
 }
-.menu-container .fa {
-  cursor: pointer;
-}
-.menu-container .far {
-  cursor: pointer;
-}
-.menu-container .settings-icon {
-  display: flex;
-  justify-content: space-between;
-  font-size: 24px;
-  margin-bottom: 10px;
-}
 .menu-container .actions {
   display: none;
   position: absolute;
-  top: 40px;
+  bottom: 20px;
   right: 0;
   background: #fff;
   border: 1px solid #ccc;
@@ -188,4 +193,65 @@ thead td {
 
 .editable {
   margin-right: 8px; /* Расстояние между ячейками */
+}
+
+/* Основной контейнер для строки поиска */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+  font-size: 16px; /* Общий размер шрифта */
+}
+.search-container label {
+  cursor: pointer;
+}
+
+/* Обертка для строки поиска */
+.search-input-wrapper {
+  position: relative;
+  display: none;
+}
+
+/* Иконка поиска */
+.search-input-wrapper .fa-search {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: gray;
+}
+
+/* Поле ввода */
+#student-search {
+  padding-left: 30px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}
+
+th {
+  position: relative;
+}
+
+th span {
+  font-size: 12px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  display: none;
+  z-index: 100;
+  max-height: 200px;
+  overflow-y: auto;
 }

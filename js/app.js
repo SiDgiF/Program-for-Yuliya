@@ -18,6 +18,45 @@ export let students = []; // Массив для хранения данных �
 export let currentStudentData = null; // Данные текущего студента для модального окна
 export let isEditing = false; // Флаг режима редактирования
 
+// ********************************ПОИСК*****************************
+// Открытие/закрытие меню поиск
+// Элемент строки поиска
+const searchInput = document.getElementById("student-search");
+// При клике на search-container показываем поле ввода
+document
+  .querySelector(".search-container")
+  .addEventListener("click", (event) => {
+    // Предотвращаем распространение события, чтобы не вызвать скрытие при клике внутри контейнера
+    event.stopPropagation();
+
+    const searchInputWrapper = document.querySelector(".search-input-wrapper");
+    searchInputWrapper.style.display = "inline-block"; // Показываем поле ввода
+  });
+
+// Закрытие поля ввода при клике вне поля (на любом другом месте)
+document.addEventListener("click", (event) => {
+  const searchInputWrapper = document.querySelector(".search-input-wrapper");
+
+  // Проверяем, был ли клик вне поля ввода
+  const isClickInsideSearchInput = searchInputWrapper.contains(event.target);
+  const isClickInsideSearchContainer = document
+    .querySelector(".search-container")
+    .contains(event.target);
+
+  if (!isClickInsideSearchInput && !isClickInsideSearchContainer) {
+    searchInputWrapper.style.display = "none"; // Скрываем поле ввода
+  }
+});
+
+// Обработчик ввода в строку поиска
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.toLowerCase();
+  const filteredStudents = students.filter((student) =>
+    student.name.toLowerCase().includes(query)
+  );
+  updateTable(filteredStudents);
+});
+
 // ******************** УТИЛИТЫ ********************
 
 /**
@@ -64,6 +103,23 @@ export function checkPassword(callback) {
 }
 
 // ******************** РАБОТА С ТАБЛИЦЕЙ ********************
+// Открытие/закрытие бургер-меню
+document.querySelector(".fa-cogs").addEventListener("click", (event) => {
+  event.stopPropagation(); // Останавливаем всплытие события
+  const menuContainer = document.querySelector(".menu-container");
+  menuContainer.classList.toggle("active");
+});
+
+// Закрытие меню при клике вне области меню
+document.addEventListener("click", (event) => {
+  const menuContainer = document.querySelector(".menu-container");
+  const isClickInside = menuContainer.contains(event.target);
+  const isCogsClick = event.target.closest(".fa-cogs"); // Проверяем только на иконку шестеренки
+
+  if (!isClickInside && !isCogsClick) {
+    menuContainer.classList.remove("active");
+  }
+});
 
 /**
  * Обновление таблицы с данными студентов
@@ -263,3 +319,5 @@ document.addEventListener("click", (event) => {
     menuContainer.classList.remove("active");
   }
 });
+
+// сортировка
