@@ -301,23 +301,3 @@ document.addEventListener("DOMContentLoaded", () => {
     notification.style.display = "block"; // Показать уведомление, если данных нет
   }
 });
-
-// ******************** РАБОТА С МОДАЛЬНЫМИ ОКНАМИ ********************
-// Открытие/закрытие бургер-меню
-document.querySelector(".fa").addEventListener("click", () => {
-  const menuContainer = document.querySelector(".menu-container");
-  menuContainer.classList.toggle("active");
-});
-
-// Закрытие меню при клике вне области меню
-document.addEventListener("click", (event) => {
-  const menuContainer = document.querySelector(".menu-container");
-  const isClickInside = menuContainer.contains(event.target);
-  const isIconClick = event.target.closest(".fa");
-
-  if (!isClickInside && !isIconClick) {
-    menuContainer.classList.remove("active");
-  }
-});
-
-// сортировка

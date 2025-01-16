@@ -1,23 +1,21 @@
 import { updateTable } from "./app.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Массив столбцов, для которых нужно добавить треугольники
+  // Список столбцов используется для добавления фильтров.
+  // Эти столбцы выбраны, так как они представляют ключевые характеристики студентов, которые могут быть полезны для фильтрации.
   const columns = [
     "country",
     "gender",
     "group",
     "faculty",
     "course",
-    // "educationType",
     "admissionYear",
     "graduationYear",
     "curator",
   ];
 
-  // Создаем объект для хранения выбранных значений по каждому столбцу
   let selectedValuesByColumn = {};
 
-  // Добавление треугольников для каждого столбца
   columns.forEach((columnId) => {
     const header = document.getElementById(columnId);
 
@@ -34,16 +32,12 @@ document.addEventListener("DOMContentLoaded", function () {
       header.appendChild(dropdownIcon);
     }
 
-    // Инициализируем выбранные значения для этого столбца
     if (!selectedValuesByColumn[columnId]) {
       selectedValuesByColumn[columnId] = [];
     }
 
-    // Добавляем обработчик клика для фильтрации
     dropdownIcon.addEventListener("click", (event) => {
-      event.stopPropagation(); // Остановить всплытие события
-
-      // Закрыть все открытые меню перед открытием нового
+      event.stopPropagation();
       closeAllDropdownMenus();
 
       let filterMenu = document.getElementById(`${columnId}-filter-menu`);
@@ -64,7 +58,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
       filterMenu.innerHTML = "";
 
-      // Все чекбоксы должны быть выбраны изначально
+      const selectAllLabel = document.createElement("label");
+      selectAllLabel.style.display = "block";
+
+      const selectAllCheckbox = document.createElement("input");
+      selectAllCheckbox.type = "checkbox";
+      selectAllCheckbox.checked = true;
+
+      selectAllCheckbox.addEventListener("change", () => {
+        const checkboxes = filterMenu.querySelectorAll(
+          "input[type='checkbox']"
+        );
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = selectAllCheckbox.checked;
+          const value = checkbox.value;
+          if (
+            selectAllCheckbox.checked &&
+            !selectedValuesByColumn[columnId].includes(value)
+          ) {
+            selectedValuesByColumn[columnId].push(value);
+          } else if (!selectAllCheckbox.checked) {
+            selectedValuesByColumn[columnId] = [];
+          }
+        });
+        filterTableByColumn(columnId);
+      });
+
+      selectAllLabel.appendChild(selectAllCheckbox);
+      selectAllLabel.appendChild(document.createTextNode("Выбрать всё"));
+      filterMenu.appendChild(selectAllLabel);
+
       uniqueValues.forEach((value) => {
         const label = document.createElement("label");
         label.style.display = "block";
@@ -72,8 +95,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.value = value;
-        checkbox.checked = true; // Все чекбоксы с галочкой изначально
-        selectedValuesByColumn[columnId].push(value); // Инициализация значений
+        checkbox.checked = true;
+        selectedValuesByColumn[columnId].push(value);
 
         checkbox.addEventListener("change", () => {
           if (checkbox.checked) {
@@ -83,6 +106,12 @@ document.addEventListener("DOMContentLoaded", function () {
               columnId
             ].filter((selected) => selected !== value);
           }
+
+          const allChecked = Array.from(
+            filterMenu.querySelectorAll("input[type='checkbox']")
+          ).every((cb) => cb.checked);
+          selectAllCheckbox.checked = allChecked;
+
           filterTableByColumn(columnId);
         });
 
@@ -98,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Функция фильтрации таблицы по выбранным значениям
   function filterTableByColumn(columnId) {
     const studentsData = JSON.parse(localStorage.getItem("studentsData")) || [];
     const selectedValues = selectedValuesByColumn[columnId];
@@ -108,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateTable(filteredData);
   }
 
-  // Закрыть все открытые дропменю
   function closeAllDropdownMenus() {
     const allMenus = document.querySelectorAll(".dropdown-menu");
     allMenus.forEach((menu) => {
@@ -116,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Закрытие дропменю при клике вне меню
   document.addEventListener("click", (event) => {
     const dropdowns = document.querySelectorAll(".dropdown-menu");
     dropdowns.forEach((menu) => {
@@ -126,3 +152,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// Поиск

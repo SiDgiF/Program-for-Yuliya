@@ -62,6 +62,8 @@ function showModalForNewStudent() {
     day2: "",
     month2: "",
     year2: "",
+    documentScan: "", // ! Новое поле для скана документа
+    documentScan2: "", // ! Новое поле для скана документа
   };
 
   modalDetails.innerHTML = `
@@ -106,10 +108,91 @@ function showModalForNewStudent() {
     <p><span contenteditable="true" class="editable editing" data-key="residencePermission"></span></p>
     <p><strong>с: </strong> <span contenteditable="true" class="editable editing" data-key="day1">&nbsp;</span> <span contenteditable="true" class="editable editing" data-key="month1">&nbsp;</span><span contenteditable="true" class="editable editing" data-key="year1">&nbsp;</span></p>
     <p><strong>по: </strong> <span contenteditable="true" class="editable editing" data-key="day2">&nbsp;</span> <span contenteditable="true" class="editable editing" data-key="month2">&nbsp;</span><span contenteditable="true" class="editable editing" data-key="year2">&nbsp;</span></p>
+    </div>
+ <div class="modal-details-item">
+      <h3>Документы</h3>
+      <p><strong>Скан документа 1:</strong></p>
+      <input type="file" id="document-scan-1" accept="application/pdf,image/*">
+      <button id="view-scan-button-1" style="display: none;">Посмотреть скан 1</button>
+      <button id="delete-scan-button-1" style="display: none;">Удалить скан 1</button>
+      <p><strong>Скан документа 2:</strong></p>
+      <input type="file" id="document-scan-2" accept="application/pdf,image/*">
+      <button id="view-scan-button-2" style="display: none;">Посмотреть скан 2</button>
+      <button id="delete-scan-button-2" style="display: none;">Удалить скан 2</button>
+    </div>
 `;
 
   document.querySelectorAll(".editable.editing").forEach((el) => {
     el.style.backgroundColor = "#f0f0f0";
+  });
+
+  const fileInput1 = document.getElementById("document-scan-1");
+  const fileInput2 = document.getElementById("document-scan-2");
+  const viewButton1 = document.getElementById("view-scan-button-1");
+  const viewButton2 = document.getElementById("view-scan-button-2");
+  const deleteButton1 = document.getElementById("delete-scan-button-1");
+  const deleteButton2 = document.getElementById("delete-scan-button-2");
+
+  fileInput1.addEventListener("change", () => {
+    if (fileInput1.files.length > 0) {
+      const file = fileInput1.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        emptyStudentData.documentScan1 = e.target.result; // Сохраняем первый скан
+        viewButton1.style.display = "block";
+        deleteButton1.style.display = "block";
+
+        viewButton1.onclick = function () {
+          const win = window.open();
+          win.document.write(
+            '<iframe src="' +
+              e.target.result +
+              '" frameborder="0" style="width:100%;height:100%;"></iframe>'
+          );
+        };
+
+        deleteButton1.onclick = function () {
+          emptyStudentData.documentScan1 = ""; // Удаляем первый скан
+          fileInput1.value = ""; // Сбрасываем поле загрузки
+          viewButton1.style.display = "none";
+          deleteButton1.style.display = "none";
+        };
+      };
+
+      reader.readAsDataURL(file);
+    }
+  });
+
+  fileInput2.addEventListener("change", () => {
+    if (fileInput2.files.length > 0) {
+      const file = fileInput2.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        emptyStudentData.documentScan2 = e.target.result; // Сохраняем второй скан
+        viewButton2.style.display = "block";
+        deleteButton2.style.display = "block";
+
+        viewButton2.onclick = function () {
+          const win = window.open();
+          win.document.write(
+            '<iframe src="' +
+              e.target.result +
+              '" frameborder="0" style="width:100%;height:100%;"></iframe>'
+          );
+        };
+
+        deleteButton2.onclick = function () {
+          emptyStudentData.documentScan2 = ""; // Удаляем второй скан
+          fileInput2.value = ""; // Сбрасываем поле загрузки
+          viewButton2.style.display = "none";
+          deleteButton2.style.display = "none";
+        };
+      };
+
+      reader.readAsDataURL(file);
+    }
   });
 
   modal.style.display = "block";
@@ -120,35 +203,25 @@ function showModalForNewStudent() {
     if (confirmSave) {
       const newStudent = {};
 
-      // Собираем данные из редактируемых ячеек
       document.querySelectorAll(".editable").forEach((el) => {
         const key = el.getAttribute("data-key");
         const value = el.innerText.trim();
         newStudent[key] = value;
       });
 
-      // Получаем текущий список студентов из LocalStorage
+      newStudent.documentScan1 = emptyStudentData.documentScan1; // Добавляем первый скан
+      newStudent.documentScan2 = emptyStudentData.documentScan2; // Добавляем второй скан
+
       const students = JSON.parse(localStorage.getItem("studentsData")) || [];
-
-      // Добавляем нового студента
       students.push(newStudent);
-
-      // Сохраняем обновлённый список в LocalStorage
       localStorage.setItem("studentsData", JSON.stringify(students));
 
-      // Перестраиваем таблицу
       updateTable(students);
-
-      // Сохраняем данные в файл
       saveToFile(students, "students.json");
-
-      // Закрываем модальное окно
       modal.style.display = "none";
-
       alert("Данные успешно сохранены!");
     } else {
       alert("Сохранение отменено.");
-      // Закрываем модальное окно
       modal.style.display = "none";
     }
   };

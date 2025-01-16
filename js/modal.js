@@ -21,6 +21,7 @@ import {
 
 let currentStudentData = {}; // Переменная для хранения данных текущего студента
 let isEditing = false; // Флаг для редактирования
+console.log("isEditing =", isEditing); // Вывод значения isEditing в консоль
 /**
  * Получение URL изображения флага по названию страны
  * @param {string} country - Название страны
@@ -66,8 +67,8 @@ tableBody.addEventListener("click", (event) => {
 
 // Функция для отображения модального окна с полной информацией
 function showModal(studentData) {
-  saveButton.style.display = "none"; // Скрываем кнопку сохранения
-
+  // saveButton.style.display = "none"; // Скрываем кнопку сохранения
+  saveButton.style.display = isEditing ? "block" : "none";
   document.getElementById("print-button").style.display = "block";
   document.getElementById("edit-button").style.display = "block";
   document.getElementById("delete-button").style.display = "block";
@@ -177,6 +178,27 @@ function showModal(studentData) {
     studentData.year2
   }</span></p>
     </div>
+
+<div class="modal-details-item">
+<h3>Отсканированные документы</h3>
+<div id="scan-controls-1">
+  <button id="add-scan-button-scan1"><i class="fa fa-plus"></i></button>
+  <button id="view-scan-button-scan1"><i class="fa fa-eye"></i></button>
+  <button id="edit-scan-button-scan1" style="display: none;"><i class="fa fa-pen"></i></button>
+  <button id="delete-scan-button-scan1" style="display: none;"><i class="fa fa-minus"></i></button>
+  <span id="scan-file-name-scan1"></span>
+</div>
+<div id="scan-controls-2">
+  <button id="add-scan-button-scan2" style="display: none;"><i class="fa fa-plus"></i></button>
+  <button id="view-scan-button-scan2" ><i class="fa fa-eye"></i></button>
+  <button id="edit-scan-button-scan2" style="display: none;"><i class="fa fa-pen"></i></button>
+  <button id="delete-scan-button-scan2" style="display: none;"><i class="fa fa-minus"></i></button>
+  <span id="scan-file-name-scan2"></span>
+</div>
+
+</div>
+
+
   `;
   modal.style.display = "block"; // Показываем модальное окно
 }
@@ -213,30 +235,44 @@ function closeModal() {
       "Вы внесли изменения. Сохранить их перед закрытием?"
     );
     if (confirmSave) {
-      // Сохраняем изменения
+      // Сохраняем изменения из полей
       const editableFields = document.querySelectorAll(".editable");
       editableFields.forEach((field) => {
         const key = field.dataset.key;
         currentStudentData[key] = field.textContent;
       });
 
-      // Сохранение изменений в массиве и localStorage
+      // Сохраняем сканы из localStorage
+      const documentScan1 = localStorage.getItem("scan1");
+      const documentScan2 = localStorage.getItem("scan2");
+
+      if (documentScan1) currentStudentData.documentScan1 = documentScan1;
+      if (documentScan2) currentStudentData.documentScan2 = documentScan2;
+
+      // Сохранение изменений в массиве студентов
       const rowIndex = students.findIndex(
         (student) => student.name === currentStudentData.name
       );
       if (rowIndex !== -1) {
         students[rowIndex] = currentStudentData;
-        localStorage.setItem("studentsData", JSON.stringify(students));
-        updateTable(students);
-
-        // Предлагаем сохранить файл на локальный диск
-        saveToFile(students, "students.json");
+      } else {
+        students.push(currentStudentData); // Добавляем нового студента, если его ещё нет
       }
+
+      // Сохраняем данные в localStorage
+      localStorage.setItem("studentsData", JSON.stringify(students));
+
+      // Обновляем таблицу
+      updateTable(students);
+
+      // Сохраняем данные в файл JSON
+      saveToFile(students, "students.json");
     } else {
       // Если пользователь отказался, откатываем изменения
-      currentStudentData = null; // Сбрасываем изменения
+      currentStudentData = null;
     }
   }
+
   modal.style.display = "none"; // Закрываем окно
   isEditing = false; // Сбрасываем флаг
 }
@@ -244,21 +280,22 @@ function closeModal() {
 // Закрытие модального окна через кнопку
 closeButton.addEventListener("click", closeModal);
 
-// // Закрытие модального окна при клике вне окна
-// window.addEventListener("click", (event) => {
-//   if (event.target === modal) {
-//     closeModal();
-//   }
-// });
-
 document.getElementById("edit-button").addEventListener("click", () => {
   checkPassword(() => {
+    // Делаем поля редактируемыми
     const editableFields = document.querySelectorAll(".editable");
     editableFields.forEach((field) => {
       field.contentEditable = "true";
       field.classList.add("editing"); // Добавляем класс для подсветки
     });
+
+    // Добавляем кнопки редактирования сканов
+    // Настраиваем обработчики для первого и второго сканов
+    setupScanHandlers("scan1");
+    setupScanHandlers("scan2");
+
     isEditing = true; // Устанавливаем флаг изменений
+    console.log("isEditing set to", isEditing); // Отладочный вывод
   });
 });
 
@@ -283,3 +320,134 @@ document.getElementById("delete-button").addEventListener("click", () => {
     }
   });
 });
+
+// кнопки для скана
+
+export function setupScanHandlers(scanKey) {
+  const addButtonId = `add-scan-button-${scanKey}`;
+  const viewButtonId = `view-scan-button-${scanKey}`;
+  const editButtonId = `edit-scan-button-${scanKey}`;
+  const deleteButtonId = `delete-scan-button-${scanKey}`;
+  const fileNameContainerId = `scan-file-name-${scanKey}`;
+
+  // Добавляем обработчик на кнопку добавления скана
+  document.getElementById(addButtonId).addEventListener("click", () => {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*,application/pdf"; // Поддержка изображений и PDF
+
+    // Ожидаем выбора файла
+    fileInput.addEventListener("change", (event) => {
+      const file = event.target.files[0]; // Получаем файл
+
+      if (file) {
+        // Используем handleFileUpload для обработки загрузки файла
+        handleFileUpload(scanKey, file);
+
+        // Показываем кнопки
+        document.getElementById(viewButtonId).style.display = "block";
+        document.getElementById(editButtonId).style.display = "block";
+        document.getElementById(deleteButtonId).style.display = "block";
+
+        // Скрываем кнопку добавления
+        document.getElementById(addButtonId).style.display = "none";
+
+        // Показываем название файла рядом с кнопкой
+        const fileNameContainer = document.getElementById(fileNameContainerId);
+        fileNameContainer.textContent = file.name;
+      }
+    });
+
+    // Открываем окно выбора файла
+    fileInput.click();
+  });
+
+  // Реализация просмотра файла
+  document.getElementById(viewButtonId).addEventListener("click", () => {
+    const scanBase64 = localStorage.getItem(scanKey);
+    if (scanBase64) {
+      const newWindow = window.open();
+      newWindow.document.write(
+        `<embed src="${scanBase64}" width="100%" height="100%">`
+      );
+      newWindow.document.close();
+    }
+  });
+
+  // Реализация редактирования
+  document.getElementById(editButtonId).addEventListener("click", () => {
+    const newFileInput = document.createElement("input");
+    newFileInput.type = "file";
+    newFileInput.accept = "image/*,application/pdf";
+
+    newFileInput.addEventListener("change", (event) => {
+      const newFile = event.target.files[0];
+      if (newFile) {
+        // Обновляем данные с помощью handleFileUpload
+        handleFileUpload(scanKey, newFile);
+
+        // Обновляем название файла
+        const fileNameContainer = document.getElementById(fileNameContainerId);
+        fileNameContainer.textContent = newFile.name;
+
+        console.log(`Скан ${scanKey} обновлён`);
+      }
+    });
+
+    // Открываем окно выбора файла
+    newFileInput.click();
+  });
+
+  // Реализация удаления
+  document.getElementById(deleteButtonId).addEventListener("click", () => {
+    console.log(`Удалить скан ${scanKey}`);
+    localStorage.removeItem(scanKey);
+    document.getElementById(viewButtonId).style.display = "none";
+    document.getElementById(editButtonId).style.display = "none";
+    document.getElementById(deleteButtonId).style.display = "none";
+    document.getElementById(addButtonId).style.display = "block"; // Показываем кнопку добавления
+    const fileNameContainer = document.getElementById(fileNameContainerId);
+    fileNameContainer.textContent = ""; // Убираем название файла
+  });
+}
+
+// Функция для обработки загрузки файла
+function handleFileUpload(scanKey, file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    const base64String = reader.result; // Преобразуем файл в Base64
+    localStorage.setItem(scanKey, base64String); // Сохраняем Base64 в localStorage
+    console.log(`Файл сохранён в Base64 с ключом ${scanKey}`);
+  };
+  reader.readAsDataURL(file); // Читаем файл как Data URL
+}
+
+// Инициализация кнопки просмотра скана scan1
+document
+  .getElementById("view-scan-button-scan1")
+  .addEventListener("click", () => {
+    // Проверяем наличие данных в studentData.documentScan1
+    if (currentStudentData && currentStudentData.documentScan1) {
+      const base64Data = currentStudentData.documentScan1;
+
+      // Проверяем, является ли это изображением
+      if (base64Data.startsWith("data:image")) {
+        // Открываем изображение в новом окне
+        const newWindow = window.open();
+        newWindow.document.write(`
+        <html>
+          <head><title>Просмотр изображения</title></head>
+          <body style="margin: 0; display: flex; justify-content: center; align-items: center; background-color: #000;">
+            <img src="${base64Data}" style="max-width: 100%; max-height: 100%;">
+          </body>
+        </html>
+      `);
+        newWindow.document.close();
+      } else {
+        console.error("Данные не являются изображением в формате Base64.");
+      }
+    } else {
+      console.error("Данные скана отсутствуют или не были загружены.");
+      alert("Файл скана отсутствует.");
+    }
+  });
