@@ -196,34 +196,68 @@ function showModal(studentData) {
   setupScanHandlers("scan2", studentData);
 
   // кнопка редактирования
-  document.getElementById("edit-button").addEventListener("click", () => {
-    checkPassword(() => {
-      // Делаем поля редактируемыми
-      const editableFields = document.querySelectorAll(".editable");
-      editableFields.forEach((field) => {
-        field.contentEditable = "true";
-        field.classList.add("editing"); // Добавляем класс для подсветки
+  document.getElementById("edit-button").addEventListener(
+    "click",
+    () => {
+      // Вызов checkPassword с проверкой пароля
+      checkPassword(() => {
+        // Делаем поля редактируемыми
+        const editableFields = document.querySelectorAll(".editable");
+        editableFields.forEach((field) => {
+          field.contentEditable = "true";
+          field.classList.add("editing"); // Добавляем класс для подсветки
+        });
+
+        // Устанавливаем флаг редактирования
+        isEditing = true;
+        console.log("isEditing set to", isEditing);
+
+        // Обновляем кнопки
+        updateScanButtons("scan1");
+        updateScanButtons("scan2");
+
+        // Настраиваем обработчики
+        setupScanHandlers("scan1", studentData);
+        setupScanHandlers("scan2", studentData);
       });
+    },
+    { once: true } // Обработчик вызовется только один раз
+  );
 
-      // Устанавливаем флаг редактирования
-      isEditing = true;
-      console.log("isEditing set to", isEditing); // Отладочный вывод
+  // Обработчик для кнопки "Удалить"
+  document.getElementById("delete-button").addEventListener(
+    "click",
+    () => {
+      checkPassword(() => {
+        const confirmDelete = confirm(
+          "Вы уверены, что хотите удалить эти данные?"
+        );
+        if (confirmDelete) {
+          // Удаляем текущего студента из массива
+          const rowIndex = students.findIndex(
+            (student) => student.name === currentStudentData.name
+          );
+          if (rowIndex !== -1) {
+            students.splice(rowIndex, 1); // Удаляем из массива
+            localStorage.setItem("studentsData", JSON.stringify(students)); // Обновляем localStorage
+            updateTable(students); // Обновляем таблицу
+            saveToFile(students, "students.json"); // Сохраняем данные в файл
+            closeModal(); // Закрываем модальное окно
+          }
+        } else {
+          alert("Удаление отменено.");
+        }
+      });
+    },
+    { once: true } // Обработчик вызовется только один раз
+  );
 
-      // Обновляем кнопки сразу после изменения флага
-      updateScanButtons("scan1");
-      updateScanButtons("scan2");
-      setupScanHandlers("scan1", studentData);
-      setupScanHandlers("scan2", studentData);
-    });
-  });
-}
+  // Обработчик для кнопки печати
+  document.getElementById("print-button").addEventListener("click", () => {
+    const printContents = modalDetails.innerHTML;
+    const originalContents = document.body.innerHTML;
 
-// Обработчик для кнопки печати
-document.getElementById("print-button").addEventListener("click", () => {
-  const printContents = modalDetails.innerHTML;
-  const originalContents = document.body.innerHTML;
-
-  document.body.innerHTML = `
+    document.body.innerHTML = `
     <html>
       <head>
         <title>Печать</title>
@@ -238,80 +272,59 @@ document.getElementById("print-button").addEventListener("click", () => {
     </html>
   `;
 
-  window.print();
-  document.body.innerHTML = originalContents;
-  window.location.reload(); // Перезагрузка страницы для восстановления содержимого
-});
+    window.print();
+    document.body.innerHTML = originalContents;
+    window.location.reload(); // Перезагрузка страницы для восстановления содержимого
+  });
 
-// Обработчик закрытия модального окна
-function closeModal() {
-  if (isEditing) {
-    const confirmSave = confirm(
-      "Вы внесли изменения. Сохранить их перед закрытием?"
-    );
-    if (confirmSave) {
-      // Сохраняем изменения из полей
-      const editableFields = document.querySelectorAll(".editable");
-      editableFields.forEach((field) => {
-        const key = field.dataset.key;
-        currentStudentData[key] = field.textContent;
-      });
-
-      // Сохраняем сканы из localStorage
-      ["scan1", "scan2"].forEach((scanKey) => {
-        const scanData = localStorage.getItem(scanKey);
-        currentStudentData[scanKey] = scanData || null;
-      });
-
-      // Сохранение изменений в массиве студентов
-      const rowIndex = students.findIndex(
-        (student) => student.name === currentStudentData.name
+  // Обработчик закрытия модального окна
+  function closeModal() {
+    if (isEditing) {
+      const confirmSave = confirm(
+        "Вы внесли изменения. Сохранить их перед закрытием?"
       );
-      if (rowIndex !== -1) {
-        students[rowIndex] = currentStudentData;
+      if (confirmSave) {
+        // Сохраняем изменения из полей
+        const editableFields = document.querySelectorAll(".editable");
+        editableFields.forEach((field) => {
+          const key = field.dataset.key;
+          currentStudentData[key] = field.textContent;
+        });
+
+        // Сохраняем сканы из localStorage
+        ["scan1", "scan2"].forEach((scanKey) => {
+          const scanData = localStorage.getItem(scanKey);
+          currentStudentData[scanKey] = scanData || null;
+        });
+
+        // Сохранение изменений в массиве студентов
+        const rowIndex = students.findIndex(
+          (student) => student.name === currentStudentData.name
+        );
+        if (rowIndex !== -1) {
+          students[rowIndex] = currentStudentData;
+        } else {
+          students.push(currentStudentData); // Добавляем нового студента, если его ещё нет
+        }
+
+        // Сохраняем данные в localStorage
+        localStorage.setItem("studentsData", JSON.stringify(students));
+
+        // Обновляем таблицу
+        updateTable(students);
+
+        // Сохраняем данные в файл JSON
+        saveToFile(students, "students.json");
       } else {
-        students.push(currentStudentData); // Добавляем нового студента, если его ещё нет
+        // Если пользователь отказался, откатываем изменения
+        currentStudentData = null;
       }
-
-      // Сохраняем данные в localStorage
-      localStorage.setItem("studentsData", JSON.stringify(students));
-
-      // Обновляем таблицу
-      updateTable(students);
-
-      // Сохраняем данные в файл JSON
-      saveToFile(students, "students.json");
-    } else {
-      // Если пользователь отказался, откатываем изменения
-      currentStudentData = null;
     }
+
+    modal.style.display = "none"; // Закрываем окно
+    isEditing = false; // Сбрасываем флаг
   }
 
-  modal.style.display = "none"; // Закрываем окно
-  isEditing = false; // Сбрасываем флаг
+  // Закрытие модального окна через кнопку
+  closeButton.addEventListener("click", closeModal);
 }
-
-// Закрытие модального окна через кнопку
-closeButton.addEventListener("click", closeModal);
-
-// Обработчик для кнопки "Удалить"
-document.getElementById("delete-button").addEventListener("click", () => {
-  checkPassword(() => {
-    const confirmDelete = confirm("Вы уверены, что хотите удалить эти данные?");
-    if (confirmDelete) {
-      // Удаляем текущего студента из массива
-      const rowIndex = students.findIndex(
-        (student) => student.name === currentStudentData.name
-      );
-      if (rowIndex !== -1) {
-        students.splice(rowIndex, 1); // Удаляем из массива
-        localStorage.setItem("studentsData", JSON.stringify(students)); // Обновляем localStorage
-        updateTable(students); // Обновляем таблицу
-        saveToFile(students, "students.json"); // Сохраняем данные в файл
-        closeModal(); // Закрываем модальное окно
-      }
-    } else {
-      alert("Удаление отменено.");
-    }
-  });
-});

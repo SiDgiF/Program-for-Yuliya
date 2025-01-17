@@ -93,11 +93,22 @@ export function saveToFile(data, filename) {
 }
 
 // Создаём функцию для проверки пароля
+// export function checkPassword(callback) {
+//   const password = prompt("Введите пароль:");
+//   if (password === "1234") {
+//     callback(); // Вызываем переданную функцию, если пароль верный
+//   } else {
+//     alert("Неверный пароль!");
+//   }
+// }
 export function checkPassword(callback) {
+  console.log("checkPassword вызвана");
   const password = prompt("Введите пароль:");
   if (password === "1234") {
-    callback(); // Вызываем переданную функцию, если пароль верный
+    console.log("Пароль верный");
+    callback();
   } else {
+    console.log("Неверный пароль");
     alert("Неверный пароль!");
   }
 }
