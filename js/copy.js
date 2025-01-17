@@ -423,32 +423,3 @@ function handleFileUpload(scanKey, file) {
   reader.readAsDataURL(file); // Читаем файл как Data URL
 }
 
-// Инициализация кнопки просмотра скана scan1
-document
-  .getElementById("view-scan-button-scan1")
-  .addEventListener("click", () => {
-    // Проверяем наличие данных в studentData.documentScan1
-    if (currentStudentData && currentStudentData.documentScan1) {
-      const base64Data = currentStudentData.documentScan1;
-
-      // Проверяем, является ли это изображением
-      if (base64Data.startsWith("data:image")) {
-        // Открываем изображение в новом окне
-        const newWindow = window.open();
-        newWindow.document.write(
-        <html>
-          <head><title>Просмотр изображения</title></head>
-          <body style="margin: 0; display: flex; justify-content: center; align-items: center; background-color: #000;">
-            <img src="${base64Data}" style="max-width: 100%; max-height: 100%;">
-          </body>
-        </html>
-      );
-        newWindow.document.close();
-      } else {
-        console.error("Данные не являются изображением в формате Base64.");
-      }
-    } else {
-      console.error("Данные скана отсутствуют или не были загружены.");
-      alert("Файл скана отсутствует.");
-    }
-  });

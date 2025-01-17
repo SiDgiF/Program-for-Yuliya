@@ -255,3 +255,47 @@ th span {
   max-height: 200px;
   overflow-y: auto;
 }
+
+/* Основные стили для кнопок */
+#scan-controls-1,
+#scan-controls-2 {
+  display: flex; /* Включаем flexbox */
+  align-items: center; /* Выравнивание по вертикали */
+  gap: 10px; /* Отступы между кнопками */
+  padding: 10px 0;
+}
+
+#scan-controls-1 button,
+#scan-controls-2 button {
+  padding: 5px 10px; /* Внутренние отступы для кнопок */
+  border: 1px solid #ccc; /* Обводка кнопок */
+  background-color: #f5f5f5; /* Цвет фона кнопок */
+  cursor: pointer; /* Курсор при наведении */
+  border-radius: 5px; /* Скругление углов */
+  display: inline-flex; /* Обеспечиваем правильное выравнивание иконок */
+  justify-content: center; /* Выравнивание иконки по центру */
+  align-items: center; /* Вертикальное выравнивание иконки */
+  font-size: 12px; /* Размер иконки */
+}
+#scan-controls-1 button:hover,
+#scan-controls-2 button:hover {
+  background-color: #e0e0e0; /* Цвет фона при наведении */
+}
+#scan-controls-1 button i,
+#scan-controls-2 button i {
+  font-size: 12px; /* Размер иконки внутри кнопки */
+}
+
+#scan-controls-1 span,
+#scan-controls-2 span {
+  margin-left: 10px; /* Добавляем отступ слева для текста */
+  font-size: 14px; /* Размер текста */
+  color: #555; /* Цвет текста */
+}
+
+#scan-controls-1 button,
+#scan-controls-2 button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
