@@ -1,11 +1,11 @@
 const CACHE_NAME = "student-db-cache-v1";
 const urlsToCache = [
-  "/",
-  "/index.html",
-  "/css/style.css",
-  "/js/main.js",
-  "/js/selectedDB.js",
-  "/js/utils.js",
+  "./",
+  "./index.html",
+  "./css/style.css",
+  "./js/main.js",
+  "./js/selectedDB.js",
+  "./js/utils.js",
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css",
   "https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js",
