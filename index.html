@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+  <link rel="manifest" href="/manifest.json">
+
+
 </head>
 
 <body>
@@ -19,12 +22,32 @@
       <!-- </div> -->
 
 
-      <!-- Бургер-меню -->
-      <div class="actions">
+      <!-- кнопки загрузки -->
+      <!-- <div class="actions">
         <input type="file" id="upload" accept=".xls,.xlsx">
         <button id="download-json">Сохранить данные в JSON</button>
         <button id="load-json">Скачать данные в JSON</button>
+      </div> -->
+      <div class="actions">
+        <h2>Загрузить/Сохранить данные</h2>
+
+        <!-- Кнопка для загрузки файла Excel -->
+        <button id="upload-xlsx">Загрузить файл Excel</button>
+
+        <!-- Кнопка для сохранения данных в JSON -->
+        <button id="download-json">Сохранить данные в JSON</button>
+
+        <!-- Кнопка для загрузки данных из JSON -->
+        <button id="load-json">Загрузить данные из JSON</button>
+
+        <!-- Кнопка для сохранения данных в XLSX -->
+
+        <button id="download-xlsx">Сохранить данные в XLSX</button>
+
+        <!-- Скрытый input для выбора файла -->
+        <input type="file" id="upload" accept=".xls,.xlsx" style="display: none;">
       </div>
+
     </div>
 
     <div class="settings-icon">
@@ -75,32 +98,34 @@
           <th rowspan="2" id="group">Группа</th>
           <th rowspan="2" id="faculty">Факультет</th>
           <th rowspan="2" id="course">Курс</th>
-          <th rowspan="2" id="note">Примечание</th>
+          <th rowspan="2" id="note">Примечание*</th>
           <th rowspan="2" id="educationType">Форма обучения</th>
           <th rowspan="2">Разрешение на временное пребывание</th>
-          <th colspan="3">Разрешение на временное пребывание с</th>
-          <th colspan="3">Разрешение на временное пребывание по</th>
+
+          <!-- Объединение подзаголовков с указанием на "с" и "по" -->
+          <th colspan="3" class="permission-header">Разрешение на временное пребывание с</th>
+          <th colspan="3" class="permission-header">Разрешение на временное пребывание по</th>
+
           <th rowspan="2">Домашний адрес</th>
           <th rowspan="2">Общежитие/квартира</th>
           <th rowspan="2" id="admissionYear">Год поступления</th>
           <th rowspan="2" id="graduationYear">Год окончания</th>
-          <th rowspan="2">Примечание</th>
+          <th rowspan="2">Примечание**</th>
           <th rowspan="2" id="curator">Куратор</th>
           <th rowspan="2">Телефон куратора</th>
           <th rowspan="2">Телефон студента</th>
-          <th rowspan="2">Примечание</th>
+          <th rowspan="2">Примечание***</th>
         </tr>
         <tr>
+          <!-- Привязка столбцов для "День", "Месяц", "Год" к разрешению на временное пребывание -->
           <th>День</th>
           <th>Месяц</th>
           <th>Год</th>
-          <th>День</th>
-          <th>Месяц</th>
-          <th>Год</th>
+          <th>День_</th>
+          <th>Месяц_</th>
+          <th>Год_</th>
         </tr>
       </thead>
-
-
 
       <tbody>
         <!-- Данные будут добавляться здесь динамически -->
@@ -116,15 +141,38 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
-  <script type="module" src="/js/app.js"></script>
-  <script type="module" src="/js/selected.js"></script>
-
-  <script type="module" src="/js/modal.js"></script>
-  <script type="module" src="/js/scan.js"></script>
-  <script type="module" src="/js/modalNew.js"></script>
 
 
 
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/indexedDB.js"></script>
+  <script type="module" src="/js/utils.js"></script>
+  <!-- <script type="module" src="/js/app.js"></script> -->
+  <!-- <script type="module" src="/js/app.js"></script> -->
+
+  <!-- <script type="module" src="/js/selected.js"></script> -->
+  <script type="module" src="/js/selectedDB.js"></script>
+
+  <!-- <script type="module" src="/js/modal.js"></script> -->
+  <!-- <script type="module" src="/js/scan.js"></script> -->
+  <!-- <script type="module" src="/js/indexedDBUtils.js"></script> -->
+  <!-- <script type="module" src="/js/modalNew.js"></script> -->
+
+
+  <!-- Добавьте код регистрации сервис-воркера перед закрывающим тегом </body> -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('Service Worker зарегистрирован с успешным результатом:', registration);
+          })
+          .catch((error) => {
+            console.log('Ошибка при регистрации Service Worker:', error);
+          });
+      });
+    }
+  </script>
 </body>
 
 </html>

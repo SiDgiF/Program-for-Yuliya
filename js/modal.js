@@ -59,7 +59,7 @@ tableBody.addEventListener("click", (event) => {
 });
 
 // Функция для отображения модального окна с полной информацией
-function showModal(studentData) {
+export function showModal(studentData) {
   saveButton.style.display = isEditing ? "block" : "none";
   document.getElementById("print-button").style.display = "block";
   document.getElementById("edit-button").style.display = "block";
@@ -276,55 +276,131 @@ function showModal(studentData) {
     document.body.innerHTML = originalContents;
     window.location.reload(); // Перезагрузка страницы для восстановления содержимого
   });
+}
 
-  // Обработчик закрытия модального окна
-  function closeModal() {
-    if (isEditing) {
-      const confirmSave = confirm(
-        "Вы внесли изменения. Сохранить их перед закрытием?"
-      );
-      if (confirmSave) {
-        // Сохраняем изменения из полей
-        const editableFields = document.querySelectorAll(".editable");
-        editableFields.forEach((field) => {
-          const key = field.dataset.key;
-          currentStudentData[key] = field.textContent;
-        });
+// Закрытие модального окна через кнопку
+closeButton.addEventListener("click", closeModal);
 
-        // Сохраняем сканы из localStorage
-        ["scan1", "scan2"].forEach((scanKey) => {
-          const scanData = localStorage.getItem(scanKey);
-          currentStudentData[scanKey] = scanData || null;
-        });
+// Обработчик закрытия модального окна
+// export function closeModal() {
+//   if (isEditing) {
+//     const confirmSave = confirm(
+//       "Вы внесли изменения. Сохранить их перед закрытием?"
+//     );
+//     if (confirmSave) {
+//       // Сохраняем изменения из полей
+//       const editableFields = document.querySelectorAll(".editable");
+//       editableFields.forEach((field) => {
+//         const key = field.dataset.key;
+//         currentStudentData[key] = field.textContent;
+//       });
 
-        // Сохранение изменений в массиве студентов
-        const rowIndex = students.findIndex(
-          (student) => student.name === currentStudentData.name
-        );
-        if (rowIndex !== -1) {
-          students[rowIndex] = currentStudentData;
-        } else {
-          students.push(currentStudentData); // Добавляем нового студента, если его ещё нет
+//       // Сохраняем сканы из localStorage
+//       ["scan1", "scan2"].forEach((scanKey) => {
+//         const scanData = localStorage.getItem(scanKey);
+//         currentStudentData[scanKey] = scanData || null;
+//       });
+
+//       // Сохранение изменений в массиве студентов
+//       const rowIndex = students.findIndex(
+//         (student) => student.name === currentStudentData.name
+//       );
+//       if (rowIndex !== -1) {
+//         students[rowIndex] = currentStudentData;
+//       } else {
+//         students.push(currentStudentData); // Добавляем нового студента, если его ещё нет
+//       }
+
+//       // Сохраняем данные в localStorage
+//       localStorage.setItem("studentsData", JSON.stringify(students));
+
+//       // Обновляем таблицу
+//       updateTable(students);
+
+//       // Сохраняем данные в файл JSON
+//       saveToFile(students, "students.json");
+//     } else {
+//       // Если пользователь отказался, откатываем изменения
+//       currentStudentData = null;
+//     }
+//   }
+
+//   modal.style.display = "none"; // Закрываем окно
+//   isEditing = false; // Сбрасываем флаг
+// }
+
+import { openDatabase } from "./indexedDBUtils.js"; // Предположим, что функция openDatabase уже реализована
+
+export async function closeModal() {
+  if (isEditing) {
+    const confirmSave = confirm(
+      "Вы внесли изменения. Сохранить их перед закрытием?"
+    );
+
+    if (confirmSave) {
+      // Сохраняем изменения из полей
+      const editableFields = document.querySelectorAll(".editable");
+      editableFields.forEach((field) => {
+        const key = field.dataset.key;
+        currentStudentData[key] = field.textContent.trim();
+      });
+
+      try {
+        const db = await openDatabase();
+        const transaction = db.transaction("scans", "readwrite");
+        const scansStore = transaction.objectStore("scans");
+
+        const scanKeys = ["scan1", "scan2"];
+        for (const scanKey of scanKeys) {
+          const scanData = localStorage.getItem(scanKey); // Данные из localStorage
+          if (scanData) {
+            // Сохраняем или обновляем запись в IndexedDB
+            await new Promise((resolve, reject) => {
+              const request = scansStore.put({ scanKey, scanData });
+              request.onsuccess = () => resolve();
+              request.onerror = (e) => reject(e.target.error);
+            });
+
+            // Удаляем из localStorage
+            localStorage.removeItem(scanKey);
+          } else {
+            // Удаляем запись из IndexedDB, если данные отсутствуют
+            await new Promise((resolve, reject) => {
+              const request = scansStore.delete(scanKey);
+              request.onsuccess = () => resolve();
+              request.onerror = (e) => reject(e.target.error);
+            });
+          }
         }
-
-        // Сохраняем данные в localStorage
-        localStorage.setItem("studentsData", JSON.stringify(students));
-
-        // Обновляем таблицу
-        updateTable(students);
-
-        // Сохраняем данные в файл JSON
-        saveToFile(students, "students.json");
-      } else {
-        // Если пользователь отказался, откатываем изменения
-        currentStudentData = null;
+      } catch (error) {
+        console.error("Ошибка работы с IndexedDB:", error);
+        alert("Не удалось сохранить данные сканов. Попробуйте снова.");
+        return;
       }
-    }
 
-    modal.style.display = "none"; // Закрываем окно
-    isEditing = false; // Сбрасываем флаг
+      // Сохраняем изменения в массиве студентов
+      const rowIndex = students.findIndex(
+        (student) => student.name === currentStudentData.name
+      );
+      if (rowIndex !== -1) {
+        students[rowIndex] = currentStudentData;
+      } else {
+        students.push(currentStudentData);
+      }
+
+      // Сохраняем данные студентов в localStorage
+      localStorage.setItem("studentsData", JSON.stringify(students));
+
+      // Обновляем таблицу
+      updateTable(students);
+
+      // Сохраняем данные в файл JSON
+      saveToFile(students, "students.json");
+    } else {
+      currentStudentData = null; // Откат изменений
+    }
   }
 
-  // Закрытие модального окна через кнопку
-  closeButton.addEventListener("click", closeModal);
+  modal.style.display = "none"; // Закрываем модальное окно
+  isEditing = false; // Сбрасываем флаг
 }
