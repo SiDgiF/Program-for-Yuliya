@@ -9,6 +9,7 @@ const urlsToCache = [
   "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css",
   "https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js",
+  "./manifest.json", // Добавьте манифест в кэш
 ];
 
 // Кэшируем необходимые ресурсы при установке
