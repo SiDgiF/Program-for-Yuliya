@@ -163,7 +163,7 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js') // путь относительно текущей директории
+        navigator.serviceWorker.register('/service-worker.js')  // Убедитесь, что путь начинается с "/"
           .then((registration) => {
             console.log('Service Worker зарегистрирован с успешным результатом:', registration);
           })
@@ -172,6 +172,7 @@
           });
       });
     }
+
 
   </script>
 </body>
