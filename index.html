@@ -8,10 +8,7 @@
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-  <!-- <link rel="manifest" href="https://sidgif.github.io/Program-for-Yuliya/manifest.json"> -->
-
-
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
 
 
 </head>
@@ -20,19 +17,10 @@
   <div class="container">
     <h1>База данных студентов</h1>
     <div class="menu-container">
-      <!-- <div id="country-filter-menu" class="dropdown-menu"> -->
-      <!-- Список стран с чекбоксами будет добавляться динамически -->
-      <!-- </div> -->
 
-
-      <!-- кнопки загрузки -->
-      <!-- <div class="actions">
-        <input type="file" id="upload" accept=".xls,.xlsx">
-        <button id="download-json">Сохранить данные в JSON</button>
-        <button id="load-json">Скачать данные в JSON</button>
-      </div> -->
       <div class="actions">
         <h2>Загрузить/Сохранить данные</h2>
+
 
         <!-- Кнопка для загрузки файла Excel -->
         <button id="upload-xlsx">Загрузить файл Excel</button>
@@ -45,7 +33,7 @@
 
         <!-- Кнопка для сохранения данных в XLSX -->
 
-        <!-- <button id="download-xlsx">Сохранить данные в XLSX</button> -->
+        <button id="download-xlsx-file">Сохранить данные в XLSX</button>
 
         <!-- Скрытый input для выбора файла -->
         <input type="file" id="upload" accept=".xls,.xlsx" style="display: none;">
@@ -144,6 +132,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
 
 
 
@@ -167,18 +156,52 @@
 
   <!-- Добавьте код регистрации сервис-воркера перед закрывающим тегом </body> -->
   <script>
+    // if ('serviceWorker' in navigator) {
+    //   window.addEventListener('load', () => {
+    //     navigator.serviceWorker.register('./service-worker.js')
+    //       .then((registration) => {
+    //         console.log('Service Worker зарегистрирован с успешным результатом:', registration);
+    //       })
+    //       .catch((error) => {
+    //         console.log('Ошибка при регистрации Service Worker:', error);
+    //       });
+    //   });
+    // }
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js')  // Убедитесь, что путь начинается с "/"
-          .then((registration) => {
-            console.log('Service Worker зарегистрирован с успешным результатом:', registration);
-          })
-          .catch((error) => {
-            console.log('Ошибка при регистрации Service Worker:', error);
+        // Удаление регистрации Service Worker
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((registration) => {
+            registration.unregister()
+              .then((unregistered) => {
+                if (unregistered) {
+                  console.log('Service Worker удалён');
+                } else {
+                  console.log('Не удалось удалить Service Worker');
+                }
+              })
+              .catch((error) => {
+                console.error('Ошибка при удалении Service Worker:', error);
+              });
           });
+        });
+
+        // Очистка кешей
+        if ('caches' in window) {
+          caches.keys().then((cacheNames) => {
+            cacheNames.forEach((cacheName) => {
+              caches.delete(cacheName).then((deleted) => {
+                if (deleted) {
+                  console.log('Кеш удалён:', cacheName);
+                }
+              }).catch((error) => {
+                console.error('Ошибка при удалении кеша:', error);
+              });
+            });
+          });
+        }
       });
     }
-
 
   </script>
 </body>

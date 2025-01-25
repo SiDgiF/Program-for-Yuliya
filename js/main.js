@@ -2,7 +2,6 @@ import { saveStudents, loadStudents } from "./indexedDB.js";
 import { saveToFile, parseExcelDate, readFileAsText } from "./utils.js";
 
 // Элементы DOM
-
 const tableBody = document
   .getElementById("student-table")
   .querySelector("tbody");
@@ -44,9 +43,18 @@ export function updateTable(data) {
     tableBody.appendChild(row);
   });
 }
-// РАБОТА С ДАННЫМИ
 
-document.addEventListener("DOMContentLoaded", () => {
+// РАБОТА С ДАННЫМИ
+// Автозагрузка данных при запуске и обработка событий на кнопки
+document.addEventListener("DOMContentLoaded", async () => {
+  // Загружаем данные студентов
+  students = await loadStudents();
+  if (students.length) {
+    updateTable(students);
+  } else {
+    notification.style.display = "block";
+  }
+
   // Получаем элементы кнопок и input
   const uploadButton = document.getElementById("upload-xlsx");
   const uploadInput = document.getElementById("upload");
@@ -167,19 +175,245 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Ошибка при обработке файла JSON: " + error.message);
       }
     });
-    // Функция для скачивания в XLSX
-    // downloadXlsxButton.addEventListener("click", async () => {
-    //  код
-    // });
   });
-});
 
-// Автозагрузка данных при запуске
-document.addEventListener("DOMContentLoaded", async () => {
-  students = await loadStudents();
-  if (students.length) {
-    updateTable(students);
-  } else {
-    notification.style.display = "block";
-  }
+  // ! Функция для скачивания в XLSX
+  downloadXlsxButton.addEventListener("click", async () => {
+    try {
+      const studentsData = await loadStudents(); // Загружаем данные (из IndexedDB или другого источника)
+
+      if (!studentsData.length) {
+        alert("Нет данных для сохранения!");
+        return;
+      }
+
+      // Получаем таблицу из DOM
+      const table = document.querySelector("table"); // Убедитесь, что у таблицы есть селектор
+      if (!table) {
+        alert("Таблица не найдена!");
+        return;
+      }
+
+      // Извлекаем ширину столбцов
+      const columnWidths = Array.from(table.querySelectorAll("th")).map(
+        (th) => {
+          return th.offsetWidth / 7; // Делим на 7, чтобы Excel лучше подстроил ширину
+        }
+      );
+
+      // Извлекаем высоту строк
+      const rowHeights = Array.from(table.querySelectorAll("tr")).map((tr) => {
+        return tr.offsetHeight / 1.5; // Коэффициент подбора для Excel
+      });
+
+      // Создаём книгу Excel
+      const workbook = new ExcelJS.Workbook();
+      const sheet = workbook.addWorksheet("Students");
+
+      // Устанавливаем столбцы с шириной
+      const columns = [
+        { header: "№", key: "number", width: columnWidths[0] || 5 },
+        { header: "ФИО", key: "name", width: columnWidths[1] || 15 },
+        { header: "ФИО (англ)", key: "nameEn", width: columnWidths[2] || 15 },
+        { header: "Приказ", key: "order", width: columnWidths[3] || 15 },
+        {
+          header: "Дата приказа",
+          key: "orderDate",
+          width: columnWidths[4] || 15,
+        },
+        {
+          header: "Год рождения",
+          key: "birthYear",
+          width: columnWidths[5] || 15,
+        },
+        { header: "Страна", key: "country", width: columnWidths[6] || 20 },
+        { header: "Пол", key: "gender", width: columnWidths[7] || 10 },
+        {
+          header: "Серия и номер паспорта, дата выдачи, срок действия",
+          key: "passport",
+          width: columnWidths[8] || 30,
+        },
+        { header: "Группа", key: "group", width: columnWidths[9] || 15 },
+        { header: "Факультет", key: "faculty", width: columnWidths[10] || 25 },
+        { header: "Курс", key: "course", width: columnWidths[11] || 10 },
+        { header: "Примечание*", key: "note", width: columnWidths[12] || 30 },
+        {
+          header: "Форма обучения",
+          key: "educationForm",
+          width: columnWidths[13] || 20,
+        },
+        {
+          header: "Разрешение на временное пребывание",
+          key: "residencePermission",
+          width: columnWidths[14] || 25,
+        },
+        { header: "День", key: "day1", width: columnWidths[15] || 10 },
+        { header: "Месяц", key: "month1", width: columnWidths[16] || 10 },
+        { header: "Год", key: "year1", width: columnWidths[17] || 10 },
+        { header: "День_", key: "day2", width: columnWidths[18] || 10 },
+        { header: "Месяц_", key: "month2", width: columnWidths[19] || 10 },
+        { header: "Год_", key: "year2", width: columnWidths[20] || 10 },
+        {
+          header: "Домашний адрес",
+          key: "homeAddress",
+          width: columnWidths[21] || 40,
+        },
+        {
+          header: "Общежитие/квартира",
+          key: "dormOrApartment",
+          width: columnWidths[22] || 20,
+        },
+        {
+          header: "Год поступления",
+          key: "enrollmentYear",
+          width: columnWidths[23] || 15,
+        },
+        {
+          header: "Год окончания",
+          key: "graduationYear",
+          width: columnWidths[24] || 15,
+        },
+        { header: "Примечание**", key: "note2", width: columnWidths[25] || 15 },
+        { header: "Куратор", key: "curator", width: columnWidths[26] || 20 },
+        {
+          header: "Телефон куратора",
+          key: "phoneCurator",
+          width: columnWidths[27] || 20,
+        },
+        {
+          header: "Телефон студента",
+          key: "phoneStudent",
+          width: columnWidths[28] || 20,
+        },
+        {
+          header: "Примечание***",
+          key: "note3",
+          width: columnWidths[29] || 15,
+        },
+      ];
+
+      sheet.columns = columns; // Устанавливаем столбцы
+
+      // Добавляем первую строку шапки через headerRow.values
+      const firstHeaderRow = sheet.getRow(1);
+      firstHeaderRow.values = [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "Разрешение на временное пребывание с",
+        "",
+        "",
+        "",
+        "Разрешение на временное пребывание по",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ];
+
+      // Добавляем вторую строку с основными заголовками
+      const headerRow = sheet.getRow(2);
+      headerRow.values = [
+        "№",
+        "ФИО",
+        "ФИО (англ)",
+        "Приказ",
+        "Дата приказа",
+        "Год рождения",
+        "Страна",
+        "Пол",
+        "Серия и номер паспорта, дата выдачи, срок действия",
+        "Группа",
+        "Факультет",
+        "Курс",
+        "Примечание*",
+        "Форма обучения",
+        "Разрешение на временное пребывание",
+        "День",
+        "Месяц",
+        "Год",
+        "День_",
+        "Месяц_",
+        "Год_",
+        "Домашний адрес",
+        "Общежитие/квартира",
+        "Год поступления",
+        "Год окончания",
+        "Примечание**",
+        "Куратор",
+        "Телефон куратора",
+        "Телефон студента",
+        "Примечание***",
+      ];
+
+      // Устанавливаем стиль для второй строки (основная шапка)
+      headerRow.font = { bold: true, color: { argb: "000000" } }; // Черный жирный текст
+      headerRow.eachCell((cell) => {
+        cell.font = {
+          name: "Times New Roman",
+          size: 10,
+          bold: true,
+          color: { argb: "000000" },
+        };
+        cell.alignment = {
+          vertical: "middle",
+          horizontal: "center",
+          wrapText: true,
+        };
+      });
+
+      // Устанавливаем высоту строки с основными заголовками
+      sheet.getRow(2).height = rowHeights[0] || 30; // Высота заголовка
+
+      // Добавляем данные студентов
+      studentsData.forEach((student, index) => {
+        const row = sheet.addRow(student);
+        row.height = rowHeights[index + 1] || 20; // Устанавливаем высоту строки
+
+        // Настроим выравнивание текста для всех ячеек
+        row.eachCell((cell) => {
+          cell.alignment = {
+            wrapText: true,
+            vertical: "middle",
+            horizontal: "left",
+          };
+        });
+      });
+
+      // Генерация файла и его скачивание
+      const buffer = await workbook.xlsx.writeBuffer();
+      const blob = new Blob([buffer], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "students.xlsx";
+      link.click();
+    } catch (error) {
+      alert("Ошибка при сохранении файла: " + error.message);
+    }
+  });
 });

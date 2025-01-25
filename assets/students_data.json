@@ -14,7 +14,7 @@
     "course": 3,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0811976",
     "day1": 29,
     "month1": "июнь",
     "year1": 2022,
@@ -30,7 +30,7 @@
     "phoneCurator": "8029-727 87 00",
     "phoneStudent": "+375299381042",
     "note3": "",
-    "id": 4561
+    "id": 6434
   },
   {
     "number": 2,
@@ -47,7 +47,7 @@
     "course": 3,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0811975",
     "day1": 29,
     "month1": "июнь",
     "year1": 2022,
@@ -63,7 +63,7 @@
     "phoneCurator": "8029-727 87 00",
     "phoneStudent": "",
     "note3": "",
-    "id": 4562
+    "id": 6435
   },
   {
     "number": 3,
@@ -80,7 +80,7 @@
     "course": 3,
     "note": "восстановление",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850099",
     "day1": 21,
     "month1": "октябрь",
     "year1": 2022,
@@ -96,7 +96,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375256865117",
     "note3": "",
-    "id": 4563
+    "id": 6436
   },
   {
     "number": 4,
@@ -113,7 +113,7 @@
     "course": "",
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0849671",
     "day1": 19,
     "month1": "апрель",
     "year1": 2023,
@@ -129,7 +129,7 @@
     "phoneCurator": "+375292006870",
     "phoneStudent": "+375291140109",
     "note3": "",
-    "id": 4564
+    "id": 6437
   },
   {
     "number": 5,
@@ -146,7 +146,7 @@
     "course": 3,
     "note": "восстановление",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812634",
     "day1": 22,
     "month1": "сентябрь",
     "year1": 2022,
@@ -162,7 +162,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375255153489",
     "note3": "",
-    "id": 4565
+    "id": 6438
   },
   {
     "number": 6,
@@ -195,7 +195,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375257131297",
     "note3": "",
-    "id": 4566
+    "id": 6439
   },
   {
     "number": 7,
@@ -212,7 +212,7 @@
     "course": 1,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812584",
     "day1": 8,
     "month1": "сентябрь",
     "year1": 2022,
@@ -228,7 +228,7 @@
     "phoneCurator": "+375292006870",
     "phoneStudent": "+375255369242",
     "note3": "",
-    "id": 4567
+    "id": 6440
   },
   {
     "number": 8,
@@ -245,7 +245,7 @@
     "course": 1,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "документы в ОГиМе",
     "day1": "",
     "month1": "",
     "year1": "",
@@ -261,7 +261,7 @@
     "phoneCurator": "+375292006870",
     "phoneStudent": "+375256556459",
     "note3": "",
-    "id": 4568
+    "id": 6441
   },
   {
     "number": 9,
@@ -278,7 +278,7 @@
     "course": 2,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "по бел.паспорту",
     "day1": "",
     "month1": "",
     "year1": "",
@@ -294,7 +294,7 @@
     "phoneCurator": "+375292006870",
     "phoneStudent": "+375296727413",
     "note3": "",
-    "id": 4569
+    "id": 6442
   },
   {
     "number": 10,
@@ -311,7 +311,7 @@
     "course": 5,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "по бел.паспорту",
     "day1": "",
     "month1": "",
     "year1": "",
@@ -327,7 +327,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "",
     "note3": "",
-    "id": 4570
+    "id": 6443
   },
   {
     "number": 11,
@@ -344,7 +344,7 @@
     "course": 1,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812181",
     "day1": 23,
     "month1": "август",
     "year1": 2022,
@@ -360,7 +360,7 @@
     "phoneCurator": 80297908216,
     "phoneStudent": "+375259735308",
     "note3": "",
-    "id": 4571
+    "id": 6444
   },
   {
     "number": 12,
@@ -377,7 +377,7 @@
     "course": "",
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850314",
     "day1": 23,
     "month1": "декабрь",
     "year1": 2022,
@@ -393,7 +393,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "+375257032611",
     "note3": "",
-    "id": 4572
+    "id": 6445
   },
   {
     "number": 13,
@@ -410,7 +410,7 @@
     "course": 3,
     "note": "АСОИ англ.яз.",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812701",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -426,7 +426,7 @@
     "phoneCurator": "+375292006870",
     "phoneStudent": "+375339125267",
     "note3": "",
-    "id": 4573
+    "id": 6446
   },
   {
     "number": 14,
@@ -443,7 +443,7 @@
     "course": 3,
     "note": "ПГС англ.яз.",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0849574",
     "day1": 24,
     "month1": "март",
     "year1": 2023,
@@ -459,7 +459,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "+375298632385",
     "note3": "",
-    "id": 4574
+    "id": 6447
   },
   {
     "number": 15,
@@ -476,7 +476,7 @@
     "course": 1,
     "note": "ПГС англ.яз.",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850071",
     "day1": 14,
     "month1": "октябрь",
     "year1": 2022,
@@ -492,7 +492,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "+375298632046",
     "note3": "",
-    "id": 4575
+    "id": 6448
   },
   {
     "number": 16,
@@ -509,7 +509,7 @@
     "course": "",
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850166",
     "day1": 11,
     "month1": "ноябрь",
     "year1": 2022,
@@ -525,7 +525,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "",
     "note3": "",
-    "id": 4576
+    "id": 6449
   },
   {
     "number": 17,
@@ -542,7 +542,7 @@
     "course": 3,
     "note": "ПГС англ яз",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850181",
     "day1": 18,
     "month1": "ноябрь",
     "year1": 2022,
@@ -558,7 +558,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "+375444970018",
     "note3": "",
-    "id": 4577
+    "id": 6450
   },
   {
     "number": 18,
@@ -575,7 +575,7 @@
     "course": 4,
     "note": "восстановление",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812714",
     "day1": 4,
     "month1": "октябрь",
     "year1": 2022,
@@ -591,7 +591,7 @@
     "phoneCurator": "+375292006870",
     "phoneStudent": 80256084521,
     "note3": "",
-    "id": 4578
+    "id": 6451
   },
   {
     "number": 19,
@@ -608,7 +608,7 @@
     "course": 1,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850371",
     "day1": 6,
     "month1": "январь",
     "year1": 2022,
@@ -624,7 +624,7 @@
     "phoneCurator": "+375292006870",
     "phoneStudent": "+37525-906-49-22",
     "note3": "",
-    "id": 4579
+    "id": 6452
   },
   {
     "number": 20,
@@ -641,7 +641,7 @@
     "course": 3,
     "note": "восстановление ",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812639",
     "day1": 23,
     "month1": "сентябрь",
     "year1": 2022,
@@ -657,7 +657,7 @@
     "phoneCurator": "8029-200-68-70",
     "phoneStudent": "+375298758050",
     "note3": "",
-    "id": 4580
+    "id": 6453
   },
   {
     "number": 21,
@@ -674,7 +674,7 @@
     "course": 3,
     "note": "приказ №278-С от 24.03.2023",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0811974",
     "day1": 29,
     "month1": "июнь",
     "year1": 2022,
@@ -690,7 +690,7 @@
     "phoneCurator": "8029-200-68-70",
     "phoneStudent": "80256135120WhatsApp",
     "note3": "",
-    "id": 4581
+    "id": 6454
   },
   {
     "number": 22,
@@ -707,7 +707,7 @@
     "course": 2,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850180",
     "day1": 18,
     "month1": "ноябрь",
     "year1": 2022,
@@ -723,7 +723,7 @@
     "phoneCurator": "8029-200-68-70",
     "phoneStudent": "+375333471045",
     "note3": "",
-    "id": 4582
+    "id": 6455
   },
   {
     "number": 23,
@@ -740,7 +740,7 @@
     "course": 3,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850412",
     "day1": 17,
     "month1": "январь",
     "year1": 2023,
@@ -756,7 +756,7 @@
     "phoneCurator": "8029-200 68 70",
     "phoneStudent": "+375333471045",
     "note3": "",
-    "id": 4583
+    "id": 6456
   },
   {
     "number": 24,
@@ -773,7 +773,7 @@
     "course": 2,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0811942",
     "day1": 21,
     "month1": "июнь",
     "year1": 2022,
@@ -789,7 +789,7 @@
     "phoneCurator": "8029-200 68 70",
     "phoneStudent": "",
     "note3": "",
-    "id": 4584
+    "id": 6457
   },
   {
     "number": 25,
@@ -806,7 +806,7 @@
     "course": "",
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0849576",
     "day1": 24,
     "month1": "март",
     "year1": 2023,
@@ -822,7 +822,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "",
     "note3": "",
-    "id": 4585
+    "id": 6458
   },
   {
     "number": 26,
@@ -839,7 +839,7 @@
     "course": 2,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "вид на жительство",
     "day1": 27,
     "month1": "декабрь",
     "year1": 2021,
@@ -855,7 +855,7 @@
     "phoneCurator": "8029-200 68 70",
     "phoneStudent": "+375296892702",
     "note3": "",
-    "id": 4586
+    "id": 6459
   },
   {
     "number": 27,
@@ -872,7 +872,7 @@
     "course": 1,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812086",
     "day1": 2,
     "month1": "август",
     "year1": 2022,
@@ -888,7 +888,7 @@
     "phoneCurator": "8029-200 68 70",
     "phoneStudent": "",
     "note3": "",
-    "id": 4587
+    "id": 6460
   },
   {
     "number": 28,
@@ -905,7 +905,7 @@
     "course": 2,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812713",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -921,7 +921,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375255243970",
     "note3": "",
-    "id": 4588
+    "id": 6461
   },
   {
     "number": 29,
@@ -938,7 +938,7 @@
     "course": 2,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850640",
     "day1": 1,
     "month1": "декабрь",
     "year1": 2022,
@@ -954,7 +954,7 @@
     "phoneCurator": "+375292221532",
     "phoneStudent": "+375295320205",
     "note3": "",
-    "id": 4589
+    "id": 6462
   },
   {
     "number": 30,
@@ -971,7 +971,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812656",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -987,7 +987,7 @@
     "phoneCurator": "+375292221532",
     "phoneStudent": "+375444733779",
     "note3": "",
-    "id": 4590
+    "id": 6463
   },
   {
     "number": 31,
@@ -1004,7 +1004,7 @@
     "course": 5,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812662",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1020,7 +1020,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "+375295433191",
     "note3": "",
-    "id": 4591
+    "id": 6464
   },
   {
     "number": 32,
@@ -1037,7 +1037,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812712",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1053,7 +1053,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "",
     "note3": "",
-    "id": 4592
+    "id": 6465
   },
   {
     "number": 33,
@@ -1070,7 +1070,7 @@
     "course": 3,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850310",
     "day1": 21,
     "month1": "декабрь",
     "year1": 2022,
@@ -1086,7 +1086,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375298849928",
     "note3": "",
-    "id": 4593
+    "id": 6466
   },
   {
     "number": 34,
@@ -1103,7 +1103,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812684",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1119,7 +1119,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297906104",
     "note3": "",
-    "id": 4594
+    "id": 6467
   },
   {
     "number": 35,
@@ -1136,7 +1136,7 @@
     "course": 5,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812673",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1152,7 +1152,7 @@
     "phoneCurator": "+375297204770",
     "phoneStudent": "+375293405207",
     "note3": "",
-    "id": 4595
+    "id": 6468
   },
   {
     "number": 36,
@@ -1169,7 +1169,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812666",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1185,7 +1185,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "+375295428216",
     "note3": "",
-    "id": 4596
+    "id": 6469
   },
   {
     "number": 37,
@@ -1202,7 +1202,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812659",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1218,7 +1218,7 @@
     "phoneCurator": "+375292221532",
     "phoneStudent": "'+375444731793",
     "note3": "",
-    "id": 4597
+    "id": 6470
   },
   {
     "number": 38,
@@ -1235,7 +1235,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812680",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1251,7 +1251,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375295159359",
     "note3": "",
-    "id": 4598
+    "id": 6471
   },
   {
     "number": 39,
@@ -1268,7 +1268,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812042",
     "day1": 22,
     "month1": "июль",
     "year1": 2022,
@@ -1284,7 +1284,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "+375293578666",
     "note3": "",
-    "id": 4599
+    "id": 6472
   },
   {
     "number": 40,
@@ -1301,7 +1301,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812706",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1317,7 +1317,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297116613",
     "note3": "",
-    "id": 4600
+    "id": 6473
   },
   {
     "number": 41,
@@ -1334,7 +1334,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812705",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1350,7 +1350,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "",
     "note3": "",
-    "id": 4601
+    "id": 6474
   },
   {
     "number": 42,
@@ -1367,7 +1367,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812037",
     "day1": 22,
     "month1": "июль",
     "year1": 2022,
@@ -1383,7 +1383,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375298509072",
     "note3": "",
-    "id": 4602
+    "id": 6475
   },
   {
     "number": 43,
@@ -1416,7 +1416,7 @@
     "phoneCurator": "+375292221532",
     "phoneStudent": "",
     "note3": "",
-    "id": 4603
+    "id": 6476
   },
   {
     "number": 44,
@@ -1433,7 +1433,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812047",
     "day1": 22,
     "month1": "июль",
     "year1": 2022,
@@ -1449,7 +1449,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "+375296698666",
     "note3": "",
-    "id": 4604
+    "id": 6477
   },
   {
     "number": 45,
@@ -1466,7 +1466,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812655",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1482,7 +1482,7 @@
     "phoneCurator": "+375292221532",
     "phoneStudent": "+375299735045",
     "note3": "",
-    "id": 4605
+    "id": 6478
   },
   {
     "number": 46,
@@ -1499,7 +1499,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812660",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1515,7 +1515,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "+375295442922",
     "note3": "",
-    "id": 4606
+    "id": 6479
   },
   {
     "number": 47,
@@ -1532,7 +1532,7 @@
     "course": 3,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812167",
     "day1": 19,
     "month1": "август",
     "year1": 2022,
@@ -1548,7 +1548,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375336676465",
     "note3": "",
-    "id": 4607
+    "id": 6480
   },
   {
     "number": 48,
@@ -1565,7 +1565,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0811108",
     "day1": 21,
     "month1": "июль",
     "year1": 2022,
@@ -1581,7 +1581,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375293206627",
     "note3": "",
-    "id": 4608
+    "id": 6481
   },
   {
     "number": 49,
@@ -1598,7 +1598,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812687",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1614,7 +1614,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297121116",
     "note3": "",
-    "id": 4609
+    "id": 6482
   },
   {
     "number": 50,
@@ -1631,7 +1631,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812696",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1647,7 +1647,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "",
     "note3": "",
-    "id": 4610
+    "id": 6483
   },
   {
     "number": 51,
@@ -1664,7 +1664,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812677",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1680,7 +1680,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375292063047",
     "note3": "",
-    "id": 4611
+    "id": 6484
   },
   {
     "number": 52,
@@ -1697,7 +1697,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812688",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1713,7 +1713,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297164482",
     "note3": "",
-    "id": 4612
+    "id": 6485
   },
   {
     "number": 53,
@@ -1730,7 +1730,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812697",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1746,7 +1746,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375295260475",
     "note3": "",
-    "id": 4613
+    "id": 6486
   },
   {
     "number": 54,
@@ -1763,7 +1763,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812708",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1779,7 +1779,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "",
     "note3": "",
-    "id": 4614
+    "id": 6487
   },
   {
     "number": 55,
@@ -1796,7 +1796,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812663",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1812,7 +1812,7 @@
     "phoneCurator": "+375292221532",
     "phoneStudent": "+375444731864",
     "note3": "",
-    "id": 4615
+    "id": 6488
   },
   {
     "number": 56,
@@ -1845,7 +1845,7 @@
     "phoneCurator": "+375292221532",
     "phoneStudent": "+375293176550",
     "note3": "",
-    "id": 4616
+    "id": 6489
   },
   {
     "number": 57,
@@ -1862,7 +1862,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812664",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1878,7 +1878,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "+375297837644",
     "note3": "",
-    "id": 4617
+    "id": 6490
   },
   {
     "number": 58,
@@ -1895,7 +1895,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812685",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -1911,7 +1911,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297154837",
     "note3": "",
-    "id": 4618
+    "id": 6491
   },
   {
     "number": 59,
@@ -1928,7 +1928,7 @@
     "course": 3,
     "note": "ПГС англ.яз.",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812029",
     "day1": 19,
     "month1": "июль",
     "year1": 2022,
@@ -1944,7 +1944,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "+375259550139",
     "note3": "",
-    "id": 4619
+    "id": 6492
   },
   {
     "number": 60,
@@ -1961,7 +1961,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850057",
     "day1": 12,
     "month1": "октябрь",
     "year1": 2022,
@@ -1977,7 +1977,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297362025",
     "note3": "",
-    "id": 4620
+    "id": 6493
   },
   {
     "number": 61,
@@ -1994,7 +1994,7 @@
     "course": 5,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812671",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2010,7 +2010,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375293405159",
     "note3": "",
-    "id": 4621
+    "id": 6494
   },
   {
     "number": 62,
@@ -2027,7 +2027,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812698",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2043,7 +2043,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "+375445810850",
     "note3": "",
-    "id": 4622
+    "id": 6495
   },
   {
     "number": 63,
@@ -2060,7 +2060,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812710",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2076,7 +2076,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297195833",
     "note3": "",
-    "id": 4623
+    "id": 6496
   },
   {
     "number": 64,
@@ -2093,7 +2093,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812690",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2109,7 +2109,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375295388274",
     "note3": "",
-    "id": 4624
+    "id": 6497
   },
   {
     "number": 65,
@@ -2126,7 +2126,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812707",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2142,7 +2142,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375295216966",
     "note3": "",
-    "id": 4625
+    "id": 6498
   },
   {
     "number": 66,
@@ -2159,7 +2159,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812683",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2175,7 +2175,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375292242772",
     "note3": "",
-    "id": 4626
+    "id": 6499
   },
   {
     "number": 67,
@@ -2192,7 +2192,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0811126",
     "day1": 27,
     "month1": "июль",
     "year1": 2022,
@@ -2208,7 +2208,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "+375298364624",
     "note3": "",
-    "id": 4627
+    "id": 6500
   },
   {
     "number": 68,
@@ -2225,7 +2225,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812043",
     "day1": 22,
     "month1": "июль",
     "year1": 2022,
@@ -2241,7 +2241,7 @@
     "phoneCurator": "+375297922197",
     "phoneStudent": "+375293230179",
     "note3": "",
-    "id": 4628
+    "id": 6501
   },
   {
     "number": 69,
@@ -2258,7 +2258,7 @@
     "course": 5,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812672",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2274,7 +2274,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "",
     "note3": "",
-    "id": 4629
+    "id": 6502
   },
   {
     "number": 70,
@@ -2291,7 +2291,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812682",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2307,7 +2307,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375292237939",
     "note3": "",
-    "id": 4630
+    "id": 6503
   },
   {
     "number": 71,
@@ -2324,7 +2324,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812747",
     "day1": 11,
     "month1": "октябрь",
     "year1": 2022,
@@ -2340,7 +2340,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "+375298095890",
     "note3": "",
-    "id": 4631
+    "id": 6504
   },
   {
     "number": 72,
@@ -2357,7 +2357,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0811107",
     "day1": 21,
     "month1": "июль",
     "year1": 2022,
@@ -2373,7 +2373,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "+375293206663",
     "note3": "",
-    "id": 4632
+    "id": 6505
   },
   {
     "number": 73,
@@ -2390,7 +2390,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812704",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2406,7 +2406,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "",
     "note3": "",
-    "id": 4633
+    "id": 6506
   },
   {
     "number": 74,
@@ -2439,7 +2439,7 @@
     "phoneCurator": "",
     "phoneStudent": "+375444153418",
     "note3": "",
-    "id": 4634
+    "id": 6507
   },
   {
     "number": 75,
@@ -2456,7 +2456,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812689",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2472,7 +2472,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297324180",
     "note3": "",
-    "id": 4635
+    "id": 6508
   },
   {
     "number": 76,
@@ -2489,7 +2489,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812665",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2505,7 +2505,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "+375292819964",
     "note3": "",
-    "id": 4636
+    "id": 6509
   },
   {
     "number": 77,
@@ -2522,7 +2522,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812040",
     "day1": 22,
     "month1": "июль",
     "year1": 2022,
@@ -2538,7 +2538,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "+375296847999",
     "note3": "",
-    "id": 4637
+    "id": 6510
   },
   {
     "number": 78,
@@ -2555,7 +2555,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812703",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2571,7 +2571,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "",
     "note3": "",
-    "id": 4638
+    "id": 6511
   },
   {
     "number": 79,
@@ -2588,7 +2588,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812711",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2604,7 +2604,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375295216969",
     "note3": "",
-    "id": 4639
+    "id": 6512
   },
   {
     "number": 80,
@@ -2621,7 +2621,7 @@
     "course": "",
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0849591",
     "day1": 30,
     "month1": "март",
     "year1": 2023,
@@ -2637,7 +2637,7 @@
     "phoneCurator": "+375297204770",
     "phoneStudent": "",
     "note3": "",
-    "id": 4640
+    "id": 6513
   },
   {
     "number": 81,
@@ -2654,7 +2654,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812686",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2670,7 +2670,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375292077298",
     "note3": "",
-    "id": 4641
+    "id": 6514
   },
   {
     "number": 82,
@@ -2687,7 +2687,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812678",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2703,7 +2703,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297332551",
     "note3": "",
-    "id": 4642
+    "id": 6515
   },
   {
     "number": 83,
@@ -2720,7 +2720,7 @@
     "course": "",
     "note": "полный курс",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850167",
     "day1": 11,
     "month1": "ноябрь",
     "year1": 2022,
@@ -2736,7 +2736,7 @@
     "phoneCurator": "8029-200-68-70",
     "phoneStudent": "",
     "note3": "",
-    "id": 4643
+    "id": 6516
   },
   {
     "number": 84,
@@ -2753,7 +2753,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812709",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2769,7 +2769,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "",
     "note3": "",
-    "id": 4644
+    "id": 6517
   },
   {
     "number": 85,
@@ -2786,7 +2786,7 @@
     "course": "",
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812044",
     "day1": 22,
     "month1": "июль",
     "year1": 2022,
@@ -2802,7 +2802,7 @@
     "phoneCurator": "375333034460",
     "phoneStudent": "+375445676341",
     "note3": "",
-    "id": 4645
+    "id": 6518
   },
   {
     "number": 86,
@@ -2819,7 +2819,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812681",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2835,7 +2835,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375295134737",
     "note3": "",
-    "id": 4646
+    "id": 6519
   },
   {
     "number": 87,
@@ -2852,7 +2852,7 @@
     "course": 5,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812674",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2868,7 +2868,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "",
     "note3": "",
-    "id": 4647
+    "id": 6520
   },
   {
     "number": 88,
@@ -2885,7 +2885,7 @@
     "course": 5,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812657",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2901,7 +2901,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "+375295852733",
     "note3": "",
-    "id": 4648
+    "id": 6521
   },
   {
     "number": 89,
@@ -2918,7 +2918,7 @@
     "course": 5,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812661",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2934,7 +2934,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "+375295464572",
     "note3": "",
-    "id": 4649
+    "id": 6522
   },
   {
     "number": 90,
@@ -2951,7 +2951,7 @@
     "course": 3,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812691",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -2967,7 +2967,7 @@
     "phoneCurator": "+375336712034",
     "phoneStudent": "+375297989419",
     "note3": "",
-    "id": 4650
+    "id": 6523
   },
   {
     "number": 91,
@@ -2984,7 +2984,7 @@
     "course": 4,
     "note": "3+3",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812702",
     "day1": 30,
     "month1": "сентябрь",
     "year1": 2022,
@@ -3000,7 +3000,7 @@
     "phoneCurator": "8029-792 21 97",
     "phoneStudent": "",
     "note3": "",
-    "id": 4651
+    "id": 6524
   },
   {
     "number": 92,
@@ -3017,7 +3017,7 @@
     "course": 1,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812085",
     "day1": 2,
     "month1": "август",
     "year1": 2022,
@@ -3033,7 +3033,7 @@
     "phoneCurator": "8029-200-68-70",
     "phoneStudent": "+375255326822",
     "note3": "",
-    "id": 4652
+    "id": 6525
   },
   {
     "number": 93,
@@ -3050,7 +3050,7 @@
     "course": 1,
     "note": "выехала по семейным обстоятельствам",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "уехала 05.05.2023 виза дейсвительна до 10.05.2023",
     "day1": "",
     "month1": "",
     "year1": "",
@@ -3066,7 +3066,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "",
     "note3": "",
-    "id": 4653
+    "id": 6526
   },
   {
     "number": 94,
@@ -3083,7 +3083,7 @@
     "course": 1,
     "note": "выехала по семейным обстоятельствам",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "уехала 12.05.2023 виза дейсвительна до 24.05.2023",
     "day1": "",
     "month1": "",
     "year1": "",
@@ -3099,7 +3099,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "+375257738085",
     "note3": "",
-    "id": 4654
+    "id": 6527
   },
   {
     "number": 95,
@@ -3116,7 +3116,7 @@
     "course": "",
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0811941",
     "day1": 22,
     "month1": "июнь",
     "year1": 2022,
@@ -3132,7 +3132,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "+375444763588",
     "note3": "",
-    "id": 4655
+    "id": 6528
   },
   {
     "number": 96,
@@ -3149,7 +3149,7 @@
     "course": "",
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850165",
     "day1": 11,
     "month1": "ноябрь",
     "year1": 2022,
@@ -3165,7 +3165,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "",
     "note3": "",
-    "id": 4656
+    "id": 6529
   },
   {
     "number": 97,
@@ -3182,7 +3182,7 @@
     "course": "",
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0811945",
     "day1": 22,
     "month1": "июнь",
     "year1": 2022,
@@ -3198,7 +3198,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "+375444761470",
     "note3": "",
-    "id": 4657
+    "id": 6530
   },
   {
     "number": 98,
@@ -3206,16 +3206,16 @@
     "nameEn": " ",
     "order": "989-C",
     "orderDate": "01.11.2022",
-    "birthYear": "01.11.2004\n",
+    "birthYear": "01.11.2004\r\n",
     "country": "Россия",
     "gender": "Муж",
-    "passport": "     96 18 826451    16.11.2018                 \n",
+    "passport": "     96 18 826451    16.11.2018                 \r\n",
     "group": "АС-64",
     "faculty": "ФЭИС",
     "course": 1,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850319",
     "day1": 23,
     "month1": "декабрь",
     "year1": 2022,
@@ -3231,7 +3231,7 @@
     "phoneCurator": "8029-200-68-70",
     "phoneStudent": "+375445737237",
     "note3": "",
-    "id": 4658
+    "id": 6531
   },
   {
     "number": 99,
@@ -3248,7 +3248,7 @@
     "course": 3,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0852008",
     "day1": 2,
     "month1": "март",
     "year1": 2023,
@@ -3264,7 +3264,7 @@
     "phoneCurator": "8029-200-68-70",
     "phoneStudent": "8029-791-37-61",
     "note3": "",
-    "id": 4659
+    "id": 6532
   },
   {
     "number": 100,
@@ -3281,7 +3281,7 @@
     "course": 2,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812693",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -3297,7 +3297,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375291224241",
     "note3": "",
-    "id": 4660
+    "id": 6533
   },
   {
     "number": 101,
@@ -3314,7 +3314,7 @@
     "course": 1,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812654",
     "day1": 27,
     "month1": "сентябрь",
     "year1": 2022,
@@ -3330,7 +3330,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375259616415",
     "note3": "",
-    "id": 4661
+    "id": 6534
   },
   {
     "number": 102,
@@ -3347,7 +3347,7 @@
     "course": 2,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812723",
     "day1": 6,
     "month1": "октябрь",
     "year1": 2022,
@@ -3363,7 +3363,7 @@
     "phoneCurator": "8029-200-68-70",
     "phoneStudent": "+375257740159",
     "note3": "",
-    "id": 4662
+    "id": 6535
   },
   {
     "number": 103,
@@ -3380,7 +3380,7 @@
     "course": 2,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812722",
     "day1": 6,
     "month1": "октябрь",
     "year1": 2022,
@@ -3396,7 +3396,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375256860203",
     "note3": "",
-    "id": 4663
+    "id": 6536
   },
   {
     "number": 104,
@@ -3413,7 +3413,7 @@
     "course": 4,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850113",
     "day1": 27,
     "month1": "октябрь",
     "year1": 2022,
@@ -3429,7 +3429,7 @@
     "phoneCurator": "8 029 222 15 32",
     "phoneStudent": "+375297932513",
     "note3": "",
-    "id": 4664
+    "id": 6537
   },
   {
     "number": 105,
@@ -3462,7 +3462,7 @@
     "phoneCurator": "8 029 222 15 32",
     "phoneStudent": "",
     "note3": "",
-    "id": 4665
+    "id": 6538
   },
   {
     "number": 106,
@@ -3495,7 +3495,7 @@
     "phoneCurator": "8 029 222 15 32",
     "phoneStudent": "",
     "note3": "",
-    "id": 4666
+    "id": 6539
   },
   {
     "number": 107,
@@ -3512,7 +3512,7 @@
     "course": 4,
     "note": "восстановление",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850461",
     "day1": 8,
     "month1": "февраль",
     "year1": 2023,
@@ -3528,7 +3528,7 @@
     "phoneCurator": "8 029 222 15 32",
     "phoneStudent": "+375298366288",
     "note3": "",
-    "id": 4667
+    "id": 6540
   },
   {
     "number": 108,
@@ -3545,7 +3545,7 @@
     "course": 5,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812540",
     "day1": 30,
     "month1": "август",
     "year1": 2022,
@@ -3561,7 +3561,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375292083621",
     "note3": "",
-    "id": 4668
+    "id": 6541
   },
   {
     "number": 109,
@@ -3578,7 +3578,7 @@
     "course": 4,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812541",
     "day1": 30,
     "month1": "август",
     "year1": 2022,
@@ -3594,7 +3594,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "",
     "note3": "",
-    "id": 4669
+    "id": 6542
   },
   {
     "number": 110,
@@ -3627,7 +3627,7 @@
     "phoneCurator": "8 029 222 15 32",
     "phoneStudent": "",
     "note3": "",
-    "id": 4670
+    "id": 6543
   },
   {
     "number": 111,
@@ -3644,7 +3644,7 @@
     "course": 4,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812613",
     "day1": 16,
     "month1": "сентябрь",
     "year1": 2022,
@@ -3660,7 +3660,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375447910774",
     "note3": "",
-    "id": 4671
+    "id": 6544
   },
   {
     "number": 112,
@@ -3677,7 +3677,7 @@
     "course": 4,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812692",
     "day1": 28,
     "month1": "сентябрь",
     "year1": 2022,
@@ -3693,7 +3693,7 @@
     "phoneCurator": "8 029 222 15 32",
     "phoneStudent": "+375255326895",
     "note3": "",
-    "id": 4672
+    "id": 6545
   },
   {
     "number": 113,
@@ -3710,7 +3710,7 @@
     "course": 5,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812604",
     "day1": 13,
     "month1": "сентябрь",
     "year1": 2022,
@@ -3726,7 +3726,7 @@
     "phoneCurator": "+375333034460",
     "phoneStudent": "+375291821156",
     "note3": "eziznuryyew.1997@gmail.com",
-    "id": 4673
+    "id": 6546
   },
   {
     "number": 114,
@@ -3759,7 +3759,7 @@
     "phoneCurator": "8029-222-15-32",
     "phoneStudent": "",
     "note3": "",
-    "id": 4674
+    "id": 6547
   },
   {
     "number": 115,
@@ -3792,7 +3792,7 @@
     "phoneCurator": "8029-222-15-32",
     "phoneStudent": "",
     "note3": "",
-    "id": 4675
+    "id": 6548
   },
   {
     "number": 116,
@@ -3809,7 +3809,7 @@
     "course": 2,
     "note": "Академ.отпуск с 07.09.2022-06.09.2023",
     "educationForm": "заочно",
-    "residencePermission": "",
+    "residencePermission": "№0811538",
     "day1": 30,
     "month1": "август",
     "year1": 2022,
@@ -3825,7 +3825,7 @@
     "phoneCurator": "8029-222-15-32",
     "phoneStudent": "+375-29-200-47-25 ",
     "note3": "",
-    "id": 4676
+    "id": 6549
   },
   {
     "number": 117,
@@ -3842,7 +3842,7 @@
     "course": 2,
     "note": "ПГС англ.яз.",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812174",
     "day1": 23,
     "month1": "август",
     "year1": 2022,
@@ -3858,7 +3858,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "+375333016694",
     "note3": "",
-    "id": 4677
+    "id": 6550
   },
   {
     "number": 118,
@@ -3875,7 +3875,7 @@
     "course": 3,
     "note": "ПГС англ.яз.",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812140",
     "day1": 11,
     "month1": "август",
     "year1": 2022,
@@ -3891,7 +3891,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "",
     "note3": "",
-    "id": 4678
+    "id": 6551
   },
   {
     "number": 119,
@@ -3908,7 +3908,7 @@
     "course": "",
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0850386",
     "day1": 10,
     "month1": "январь",
     "year1": 2023,
@@ -3924,7 +3924,7 @@
     "phoneCurator": "+3757244847",
     "phoneStudent": "",
     "note3": "",
-    "id": 4679
+    "id": 6552
   },
   {
     "number": 120,
@@ -3957,7 +3957,7 @@
     "phoneCurator": "",
     "phoneStudent": "",
     "note3": "",
-    "id": 4680
+    "id": 6553
   },
   {
     "number": 121,
@@ -3990,7 +3990,7 @@
     "phoneCurator": "",
     "phoneStudent": "",
     "note3": "",
-    "id": 4681
+    "id": 6554
   },
   {
     "number": 122,
@@ -4007,7 +4007,7 @@
     "course": "",
     "note": "",
     "educationForm": "вечерняя",
-    "residencePermission": "",
+    "residencePermission": "№0850208",
     "day1": 1,
     "month1": "декабрь",
     "year1": 2022,
@@ -4023,7 +4023,7 @@
     "phoneCurator": "",
     "phoneStudent": "+375295555987",
     "note3": "",
-    "id": 4682
+    "id": 6555
   },
   {
     "number": 123,
@@ -4040,7 +4040,7 @@
     "course": "",
     "note": "",
     "educationForm": "вечерняя",
-    "residencePermission": "",
+    "residencePermission": "№0850178",
     "day1": 18,
     "month1": "ноябрь",
     "year1": 2022,
@@ -4056,7 +4056,7 @@
     "phoneCurator": "",
     "phoneStudent": "+375-25-767-79-95",
     "note3": "",
-    "id": 4683
+    "id": 6556
   },
   {
     "name": "Кураев Степан Сергеевич г/б",
@@ -4072,7 +4072,7 @@
     "course": 4,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0849590",
     "day1": 30,
     "month1": "март",
     "year1": 2023,
@@ -4088,7 +4088,7 @@
     "phoneCurator": "",
     "phoneStudent": 80255472073,
     "note3": "",
-    "id": 4684
+    "id": 6557
   },
   {
     "name": "Маненок Дмитрий Евгеньевич как РБ",
@@ -4104,7 +4104,7 @@
     "course": 1,
     "note": "",
     "educationForm": "очно",
-    "residencePermission": "",
+    "residencePermission": "№0812633",
     "day1": 21,
     "month1": "сентябрь",
     "year1": 2022,
@@ -4120,6 +4120,6 @@
     "phoneCurator": "",
     "phoneStudent": "",
     "note3": "",
-    "id": 4685
+    "id": 6558
   }
 ]
