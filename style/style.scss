@@ -1,8 +1,10 @@
+// === Общие стили для таблиц ===
 // === Таблица студентов ===
 #student-table {
   width: 100%;
-  table-layout: auto;
+  table-layout: fixed;
   border-collapse: collapse;
+  overflow-x: auto;
 
   th,
   td {
@@ -15,10 +17,53 @@
   th {
     background-color: #f4f4f4;
     font-weight: bold;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   }
 
   td:nth-child(27) {
     white-space: nowrap;
+  }
+
+  th:nth-child(16),
+  td:nth-child(16),
+  th:nth-child(18),
+  td:nth-child(18),
+  th:nth-child(19),
+  td:nth-child(19),
+  th:nth-child(21),
+  td:nth-child(21),
+  th:nth-child(24),
+  td:nth-child(24),
+  th:nth-child(25),
+  td:nth-child(25) {
+    text-align: center;
+  }
+
+  td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background-color: #f4f4f4;
+  }
+
+  td:nth-child(2) {
+    position: sticky;
+    left: 37px;
+    z-index: 2;
+    background-color: #f4f4f4;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ccc;
+  }
+
+  th:first-child,
+  td:first-child {
+    width: 20px;
+    min-width: 20px;
+    max-width: 20px;
   }
 }
 
@@ -47,14 +92,11 @@
 // === Фиксация шапки таблицы ===
 thead {
   th {
-    position: sticky;
     top: 0;
     background-color: #f9f9f9;
-    z-index: 4; // Шапка таблицы выше всех
+    z-index: 4;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-    border: 1px solid #ddd;
     height: 60px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); // Тень с правой стороны
   }
 
   tr:first-child th {
@@ -62,7 +104,7 @@ thead {
   }
 
   tr:nth-child(2) th {
-    top: 76px; // Высота первой строки заголовка
+    top: 76px;
     border: 1px solid #ccc;
   }
 
@@ -74,49 +116,26 @@ thead {
   }
 }
 
-// === Фиксация колонок ===
-#student-table {
-  // Первая колонка (№)
-  td:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 2; // Выше, чем остальные ячейки
-    background-color: #f4f4f4;
-  }
-
-  // Вторая колонка (ФИО)
-  td:nth-child(2) {
-    position: sticky;
-    left: 40px; // Ширина первой колонки
-    z-index: 2; // Ниже первой колонки, но выше остальных
-    background-color: #f4f4f4;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); // Тень с правой стороны
-    border: 1px solid #ccc;
-  }
-}
-
 // === Настройка меню ===
 .settings-icon {
   display: flex;
-  // justify-content: space-between;
   gap: 100px;
   font-size: 16px;
   align-items: center;
   margin-bottom: 10px;
-  .fa {
-    cursor: pointer;
-  }
-  .icon-text {
-    font-weight: normal; /* Отменяем жирность текста */
-  }
 
+  .fa,
   .far {
     cursor: pointer;
   }
+
+  .icon-text {
+    font-weight: normal;
+  }
 }
+
 .menu-container {
   position: relative;
-
   padding-left: 50px;
 
   .actions {
@@ -144,7 +163,7 @@ thead {
 
 // === Модальное окно ===
 .modal {
-  display: none; // Скрыто по умолчанию
+  display: none;
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -163,23 +182,8 @@ thead {
     max-width: 750px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     position: relative;
-    font-family: Arial, sans-serif;
-
-    // Заголовок с кнопками
-    .modal-header {
-      display: flex;
-      gap: 10px; // Расстояние между кнопками
-      justify-content: flex-end;
-      align-items: center;
-      margin-bottom: 10px;
-
-      .close-icon {
-        font-size: 1rem;
-      }
-    }
   }
 
-  // Стили для таблицы внутри модального окна
   &-details-table {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -214,49 +218,41 @@ thead {
 }
 
 .country-flag {
-  width: 35px; // Размер флага
+  width: 35px;
   height: auto;
   margin-left: 10px;
 }
-// подсветка полей редактирования
 
-// .editing {
-//   background-color: #e0ddb8;
-//   border: 1px solid #f1c40f;
-// }
+// Подсветка полей редактирования
 .editing {
-  background-color: #eee8e8; /* Светло-серый фон */
-  border: none; /* Без границы */
-  border-radius: 5px; /* Скругление углов */
-  padding: 1px 20px; /* Отступы для визуального эффекта */
+  background-color: #eee8e8;
+  border: none;
+  border-radius: 5px;
+  padding: 1px 20px;
 }
 
 .editable-field {
-  margin-right: 8px; /* Расстояние между ячейками */
+  margin-right: 8px;
 }
 
-// стили для иконок
-
-/* Основной контейнер для строки поиска */
+// Стили для поиска
 .search-container {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-top: 5px;
-  font-size: 16px; /* Общий размер шрифта */
+  font-size: 16px;
+
   label {
     cursor: pointer;
   }
 }
 
-/* Обертка для строки поиска */
 .search-input-wrapper {
   position: relative;
-  // display: inline-block;
   display: none;
 }
 
-/* Иконка поиска */
 .search-input-wrapper .fa-search {
   position: absolute;
   top: 50%;
@@ -265,7 +261,6 @@ thead {
   color: gray;
 }
 
-/* Поле ввода */
 #student-search {
   padding-left: 30px;
   font-size: 14px;
@@ -274,56 +269,7 @@ thead {
   width: 200px;
 }
 
-// сортировка
-// .dropdown-menu {
-//   display: none;
-//   position: absolute;
-//   background-color: white;
-//   border: 1px solid #ccc;
-//   padding: 10px;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   z-index: 10;
-// }
-
-// .dropdown-menu.active {
-//   display: block;
-// }
-
-// .dropdown-menu input {
-//   margin-right: 5px;
-// }
-
-// .dropdown-menu {
-//   max-height: 100px;
-//   overflow-y: auto;
-// }
-
-th {
-  position: relative;
-}
-
-th span {
-  font-size: 12px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.dropdown-menu {
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 8px;
-  display: none;
-  z-index: 100;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-/* Основные стили для кнопок */
+// === Стили для кнопок ===
 $button-padding: 5px 10px;
 $button-border-color: #ccc;
 $button-bg-color: #f5f5f5;
@@ -333,43 +279,60 @@ $button-hover-bg-color: #e0e0e0;
 
 #scan-controls-1,
 #scan-controls-2 {
-  display: flex; /* Включаем flexbox */
-  align-items: center; /* Выравнивание по вертикали */
-  gap: 10px; /* Отступы между кнопками */
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 10px 0;
 }
 
 #scan-controls-1 button,
 #scan-controls-2 button {
-  padding: $button-padding; /* Внутренние отступы для кнопок */
-  border: 1px solid $button-border-color; /* Обводка кнопок */
-  background-color: $button-bg-color; /* Цвет фона кнопок */
-  cursor: pointer; /* Курсор при наведении */
-  border-radius: $button-radius; /* Скругление углов */
-  display: inline-flex; /* Обеспечиваем правильное выравнивание иконок */
-  justify-content: center; /* Выравнивание иконки по центру */
-  align-items: center; /* Вертикальное выравнивание иконки */
-  font-size: $button-font-size; /* Размер иконки */
+  padding: $button-padding;
+  border: 1px solid $button-border-color;
+  background-color: $button-bg-color;
+  cursor: pointer;
+  border-radius: $button-radius;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $button-font-size;
 
   &:hover {
-    background-color: $button-hover-bg-color; /* Цвет фона при наведении */
+    background-color: $button-hover-bg-color;
   }
 
   & i {
-    font-size: $button-font-size; /* Размер иконки внутри кнопки */
+    font-size: $button-font-size;
   }
 }
 
 #scan-controls-1 span,
 #scan-controls-2 span {
-  margin-left: 10px; /* Добавляем отступ слева для текста */
-  font-size: 14px; /* Размер текста */
-  color: #555; /* Цвет текста */
+  margin-left: 10px;
+  font-size: 14px;
+  color: #555;
 }
 
-#scan-controls-1 button,
-#scan-controls-2 button {
-  display: inline-flex;
+// === Фиксированный заголовок ===
+h1 {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 10px;
+  font-size: 24px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.settings-icon {
+  position: sticky;
+  top: 50px;
+  left: 0;
+  background-color: #fff;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  padding: 10px 20px;
+  z-index: 5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

@@ -29,17 +29,38 @@ document.addEventListener("click", (event) => {
 });
 
 // Обновление таблицы
+// export function updateTable(data) {
+//   tableBody.innerHTML = "";
+//   data.forEach((student, index) => {
+//     const row = document.createElement("tr");
+//     const cells = Object.values(student).map((value) => {
+//       const cell = document.createElement("td");
+//       cell.textContent = value;
+//       return cell;
+//     });
+
+//     cells.forEach((cell) => row.appendChild(cell));
+//     tableBody.appendChild(row);
+//   });
+// }
+
 export function updateTable(data) {
-  tableBody.innerHTML = "";
+  const tableBody = document.querySelector("#student-table tbody");
+  tableBody.innerHTML = ""; // Очищаем таблицу
+
   data.forEach((student, index) => {
     const row = document.createElement("tr");
-    const cells = Object.values(student).map((value) => {
-      const cell = document.createElement("td");
-      cell.textContent = value;
-      return cell;
+
+    // Добавляем только нужные поля (исключая id)
+    Object.entries(student).forEach(([key, value]) => {
+      if (key !== "id") {
+        // Исключаем поле "id"
+        const cell = document.createElement("td");
+        cell.textContent = value;
+        row.appendChild(cell);
+      }
     });
 
-    cells.forEach((cell) => row.appendChild(cell));
     tableBody.appendChild(row);
   });
 }
@@ -212,89 +233,89 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Устанавливаем столбцы с шириной
       const columns = [
-        { header: "№", key: "number", width: columnWidths[0] || 5 },
-        { header: "ФИО", key: "name", width: columnWidths[1] || 15 },
-        { header: "ФИО (англ)", key: "nameEn", width: columnWidths[2] || 15 },
-        { header: "Приказ", key: "order", width: columnWidths[3] || 15 },
+        { header: "№", key: "number", width: 6 },
+        { header: "ФИО", key: "name", width: 35 },
+        { header: "ФИО (англ)", key: "nameEn", width: 35 },
+        { header: "Приказ", key: "order", width: 16 },
         {
           header: "Дата приказа",
           key: "orderDate",
-          width: columnWidths[4] || 15,
+          width: 16,
         },
         {
           header: "Год рождения",
           key: "birthYear",
-          width: columnWidths[5] || 15,
+          width: 14,
         },
-        { header: "Страна", key: "country", width: columnWidths[6] || 20 },
-        { header: "Пол", key: "gender", width: columnWidths[7] || 10 },
+        { header: "Страна", key: "country", width: 21 },
+        { header: "Пол", key: "gender", width: 14 },
         {
           header: "Серия и номер паспорта, дата выдачи, срок действия",
           key: "passport",
-          width: columnWidths[8] || 30,
+          width: 45,
         },
-        { header: "Группа", key: "group", width: columnWidths[9] || 15 },
-        { header: "Факультет", key: "faculty", width: columnWidths[10] || 25 },
-        { header: "Курс", key: "course", width: columnWidths[11] || 10 },
-        { header: "Примечание*", key: "note", width: columnWidths[12] || 30 },
+        { header: "Группа", key: "group", width: 20 },
+        { header: "Факультет", key: "faculty", width: 15 },
+        { header: "Курс", key: "course", width: 8 },
+        { header: "Примечание*", key: "note", width: 23 },
         {
           header: "Форма обучения",
           key: "educationForm",
-          width: columnWidths[13] || 20,
+          width: 20,
         },
         {
           header: "Разрешение на временное пребывание",
           key: "residencePermission",
-          width: columnWidths[14] || 25,
+          width: 30,
         },
-        { header: "День", key: "day1", width: columnWidths[15] || 10 },
-        { header: "Месяц", key: "month1", width: columnWidths[16] || 10 },
-        { header: "Год", key: "year1", width: columnWidths[17] || 10 },
-        { header: "День_", key: "day2", width: columnWidths[18] || 10 },
-        { header: "Месяц_", key: "month2", width: columnWidths[19] || 10 },
-        { header: "Год_", key: "year2", width: columnWidths[20] || 10 },
+        { header: "День", key: "day1", width: 7 },
+        { header: "Месяц", key: "month1", width: 10 },
+        { header: "Год", key: "year1", width: 10 },
+        { header: "День_", key: "day2", width: 7 },
+        { header: "Месяц_", key: "month2", width: 10 },
+        { header: "Год_", key: "year2", width: 10 },
         {
           header: "Домашний адрес",
           key: "homeAddress",
-          width: columnWidths[21] || 40,
+          width: 51,
         },
         {
           header: "Общежитие/квартира",
           key: "dormOrApartment",
-          width: columnWidths[22] || 20,
+          width: 21,
         },
         {
           header: "Год поступления",
           key: "enrollmentYear",
-          width: columnWidths[23] || 15,
+          width: 16,
         },
         {
           header: "Год окончания",
           key: "graduationYear",
-          width: columnWidths[24] || 15,
+          width: 16,
         },
-        { header: "Примечание**", key: "note2", width: columnWidths[25] || 15 },
-        { header: "Куратор", key: "curator", width: columnWidths[26] || 20 },
+        { header: "Примечание**", key: "note2", width: 33 },
+        { header: "Куратор", key: "curator", width: 21 },
         {
           header: "Телефон куратора",
           key: "phoneCurator",
-          width: columnWidths[27] || 20,
+          width: 22,
         },
         {
           header: "Телефон студента",
           key: "phoneStudent",
-          width: columnWidths[28] || 20,
+          width: 22,
         },
         {
           header: "Примечание***",
           key: "note3",
-          width: columnWidths[29] || 15,
+          width: 16,
         },
       ];
 
       sheet.columns = columns; // Устанавливаем столбцы
 
-      // Добавляем первую строку шапки через headerRow.values
+      // Добавляем шапку (первая строка)
       const firstHeaderRow = sheet.getRow(1);
       firstHeaderRow.values = [
         "",
@@ -315,8 +336,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         "Разрешение на временное пребывание с",
         "",
         "",
-        "",
         "Разрешение на временное пребывание по",
+        "",
+        "",
         "",
         "",
         "",
@@ -334,7 +356,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         "",
       ];
 
-      // Добавляем вторую строку с основными заголовками
+      // Объединяем ячейки для "Разрешение на временное пребывание с" и "Разрешение на временное пребывание по"
+      sheet.mergeCells("P1:R1"); // Объединяем 3 ячейки для "Разрешение на временное пребывание с"
+      sheet.mergeCells("S1:U1"); // Объединяем 3 ячейки для "Разрешение на временное пребывание по"
+
+      // Устанавливаем стиль для первой строки (firstHeaderRow)
+      firstHeaderRow.font = { bold: true, color: { argb: "000000" } }; // Черный жирный текст
+      firstHeaderRow.eachCell((cell) => {
+        cell.font = {
+          name: "Times New Roman",
+          size: 10,
+          bold: true,
+          color: { argb: "000000" },
+        };
+        cell.alignment = {
+          vertical: "middle",
+          horizontal: "center",
+          wrapText: true,
+        };
+        // Устанавливаем бирюзовый фон
+        cell.fill = {
+          type: "pattern",
+          pattern: "solid",
+          fgColor: { argb: "40E0D0" }, // Бирюзовый цвет
+        };
+      });
+
+      // Добавляем вторую строку (основная шапка)
       const headerRow = sheet.getRow(2);
       headerRow.values = [
         "№",
@@ -369,7 +417,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         "Примечание***",
       ];
 
-      // Устанавливаем стиль для второй строки (основная шапка)
+      // Устанавливаем стиль для основной шапки (headerRow)
       headerRow.font = { bold: true, color: { argb: "000000" } }; // Черный жирный текст
       headerRow.eachCell((cell) => {
         cell.font = {
@@ -383,22 +431,28 @@ document.addEventListener("DOMContentLoaded", async () => {
           horizontal: "center",
           wrapText: true,
         };
+        // Устанавливаем бирюзовый фон
+        cell.fill = {
+          type: "pattern",
+          pattern: "solid",
+          fgColor: { argb: "40E0D0" }, // Бирюзовый цвет
+        };
       });
 
-      // Устанавливаем высоту строки с основными заголовками
-      sheet.getRow(2).height = rowHeights[0] || 30; // Высота заголовка
+      // sheet.getRow(2).height = rowHeights[0] || 40; // Высота заголовка
+      sheet.getRow(1).height = 90; // Высота заголовка
+      sheet.getRow(2).height = 90; // Высота заголовка
 
       // Добавляем данные студентов
       studentsData.forEach((student, index) => {
         const row = sheet.addRow(student);
-        row.height = rowHeights[index + 1] || 20; // Устанавливаем высоту строки
-
-        // Настроим выравнивание текста для всех ячеек
+        // row.height = rowHeights[index + 1] || 40; // Устанавливаем высоту строки
+        row.height = 90; // Устанавливаем высоту строки
         row.eachCell((cell) => {
           cell.alignment = {
             wrapText: true,
             vertical: "middle",
-            horizontal: "left",
+            horizontal: "center",
           };
         });
       });

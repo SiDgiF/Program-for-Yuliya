@@ -1,8 +1,8 @@
-@charset "UTF-8";
 #student-table {
   width: 100%;
-  table-layout: auto;
+  table-layout: fixed;
   border-collapse: collapse;
+  overflow-x: auto;
 }
 #student-table th,
 #student-table td {
@@ -14,9 +14,48 @@
 #student-table th {
   background-color: #f4f4f4;
   font-weight: bold;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 #student-table td:nth-child(27) {
   white-space: nowrap;
+}
+#student-table th:nth-child(16),
+#student-table td:nth-child(16),
+#student-table th:nth-child(18),
+#student-table td:nth-child(18),
+#student-table th:nth-child(19),
+#student-table td:nth-child(19),
+#student-table th:nth-child(21),
+#student-table td:nth-child(21),
+#student-table th:nth-child(24),
+#student-table td:nth-child(24),
+#student-table th:nth-child(25),
+#student-table td:nth-child(25) {
+  text-align: center;
+}
+#student-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: #f4f4f4;
+}
+#student-table td:nth-child(2) {
+  position: sticky;
+  left: 37px;
+  z-index: 2;
+  background-color: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+}
+#student-table th:first-child,
+#student-table td:first-child {
+  width: 20px;
+  min-width: 20px;
+  max-width: 20px;
 }
 
 .container {
@@ -39,14 +78,11 @@
 }
 
 thead th {
-  position: sticky;
   top: 0;
   background-color: #f9f9f9;
   z-index: 4;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-  border: 1px solid #ddd;
   height: 60px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 thead tr:first-child th {
   top: 0;
@@ -62,21 +98,6 @@ thead td {
   text-overflow: ellipsis;
 }
 
-#student-table td:first-child {
-  position: sticky;
-  left: 0;
-  z-index: 2;
-  background-color: #f4f4f4;
-}
-#student-table td:nth-child(2) {
-  position: sticky;
-  left: 40px;
-  z-index: 2;
-  background-color: #f4f4f4;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-  border: 1px solid #ccc;
-}
-
 .settings-icon {
   display: flex;
   gap: 100px;
@@ -84,14 +105,12 @@ thead td {
   align-items: center;
   margin-bottom: 10px;
 }
-.settings-icon .fa {
+.settings-icon .fa,
+.settings-icon .far {
   cursor: pointer;
 }
 .settings-icon .icon-text {
-  font-weight: normal; /* Отменяем жирность текста */
-}
-.settings-icon .far {
-  cursor: pointer;
+  font-weight: normal;
 }
 
 .menu-container {
@@ -138,17 +157,6 @@ thead td {
   max-width: 750px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   position: relative;
-  font-family: Arial, sans-serif;
-}
-.modal-content .modal-header {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.modal-content .modal-header .close-icon {
-  font-size: 1rem;
 }
 .modal-details-table {
   display: grid;
@@ -185,35 +193,32 @@ thead td {
 }
 
 .editing {
-  background-color: #eee8e8; /* Светло-серый фон */
-  border: none; /* Без границы */
-  border-radius: 5px; /* Скругление углов */
-  padding: 1px 20px; /* Отступы для визуального эффекта */
+  background-color: #eee8e8;
+  border: none;
+  border-radius: 5px;
+  padding: 1px 20px;
 }
 
 .editable-field {
-  margin-right: 8px; /* Расстояние между ячейками */
+  margin-right: 8px;
 }
 
-/* Основной контейнер для строки поиска */
 .search-container {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-top: 5px;
-  font-size: 16px; /* Общий размер шрифта */
+  font-size: 16px;
 }
 .search-container label {
   cursor: pointer;
 }
 
-/* Обертка для строки поиска */
 .search-input-wrapper {
   position: relative;
   display: none;
 }
 
-/* Иконка поиска */
 .search-input-wrapper .fa-search {
   position: absolute;
   top: 50%;
@@ -222,7 +227,6 @@ thead td {
   color: gray;
 }
 
-/* Поле ввода */
 #student-search {
   padding-left: 30px;
   font-size: 14px;
@@ -231,71 +235,61 @@ thead td {
   width: 200px;
 }
 
-th {
-  position: relative;
-}
-
-th span {
-  font-size: 12px;
-  cursor: pointer;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.dropdown-menu {
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 8px;
-  display: none;
-  z-index: 100;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-/* Основные стили для кнопок */
 #scan-controls-1,
 #scan-controls-2 {
-  display: flex; /* Включаем flexbox */
-  align-items: center; /* Выравнивание по вертикали */
-  gap: 10px; /* Отступы между кнопками */
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 10px 0;
 }
 
 #scan-controls-1 button,
 #scan-controls-2 button {
-  padding: 5px 10px; /* Внутренние отступы для кнопок */
-  border: 1px solid #ccc; /* Обводка кнопок */
-  background-color: #f5f5f5; /* Цвет фона кнопок */
-  cursor: pointer; /* Курсор при наведении */
-  border-radius: 5px; /* Скругление углов */
-  display: inline-flex; /* Обеспечиваем правильное выравнивание иконок */
-  justify-content: center; /* Выравнивание иконки по центру */
-  align-items: center; /* Вертикальное выравнивание иконки */
-  font-size: 12px; /* Размер иконки */
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  border-radius: 5px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
 }
 #scan-controls-1 button:hover,
 #scan-controls-2 button:hover {
-  background-color: #e0e0e0; /* Цвет фона при наведении */
+  background-color: #e0e0e0;
 }
 #scan-controls-1 button i,
 #scan-controls-2 button i {
-  font-size: 12px; /* Размер иконки внутри кнопки */
+  font-size: 12px;
 }
 
 #scan-controls-1 span,
 #scan-controls-2 span {
-  margin-left: 10px; /* Добавляем отступ слева для текста */
-  font-size: 14px; /* Размер текста */
-  color: #555; /* Цвет текста */
+  margin-left: 10px;
+  font-size: 14px;
+  color: #555;
 }
 
-#scan-controls-1 button,
-#scan-controls-2 button {
-  display: inline-flex;
+h1 {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 10px;
+  font-size: 24px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.settings-icon {
+  position: sticky;
+  top: 50px;
+  left: 0;
+  background-color: #fff;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  padding: 10px 20px;
+  z-index: 5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

@@ -15,7 +15,7 @@
 
 <body>
   <div class="container">
-    <h1>База данных студентов</h1>
+    <h1>База данных студентов международного отдела БрГТУ</h1>
     <div class="menu-container">
 
       <div class="actions">
@@ -76,47 +76,51 @@
 
     <table id="student-table">
       <thead>
-        <tr>
-          <th rowspan="2">№</th>
-          <th rowspan="2">ФИО</th>
-          <th rowspan="2">ФИО (англ)</th>
-          <th rowspan="2">Приказ</th>
-          <th rowspan="2">Дата приказа</th>
-          <th rowspan="2">Год рождения</th>
-          <th rowspan="2" id="country">Страна</th>
-          <th rowspan="2" id="gender">Пол</th>
-          <th rowspan="2">Серия и номер паспорта, дата выдачи, срок действия</th>
-          <th rowspan="2" id="group">Группа</th>
-          <th rowspan="2" id="faculty">Факультет</th>
-          <th rowspan="2" id="course">Курс</th>
-          <th rowspan="2" id="note">Примечание*</th>
-          <th rowspan="2" id="educationType">Форма обучения</th>
-          <th rowspan="2">Разрешение на временное пребывание</th>
+        <thead>
+          <tr>
+            <th rowspan="2" style="width: 40px; text-align: center;">№</th>
+            <th rowspan="2" style="width: 160px; text-align: left;">ФИО</th>
+            <th rowspan="2" style="width: 160px; text-align: left;">ФИО (англ)</th>
+            <th rowspan="2" style="width: 60px; text-align: center;">Приказ</th>
+            <th rowspan="2" style="width: 80px; text-align: center;">Дата приказа</th>
+            <th rowspan="2" style="width: 80px; text-align: center;">Год рождения</th>
+            <th rowspan="2" style="width: 150px; text-align: left;" id="country">Страна</th>
+            <th rowspan="2" style="width: 50px; text-align: center;" id="gender">Пол</th>
+            <th rowspan="2" style="width: 150px; text-align: left;">Серия и номер паспорта, дата выдачи, срок действия
+            </th>
+            <th rowspan="2" style="width: 100px; text-align: center ;" id="group">Группа</th>
+            <th rowspan="2" style="width: 100px; text-align: left;" id="faculty">Факультет</th>
+            <th rowspan="2" style="width: 60px; text-align: center;" id="course">Курс</th>
+            <th rowspan="2" style="width: 120px; text-align: left;" id="note">Примечание*</th>
+            <th rowspan="2" style="width: 70px; text-align: center;" id="educationType">Форма обучения</th>
+            <th rowspan="2" style="width: 120px; text-align: left;">Разрешение на временное пребывание</th>
 
-          <!-- Объединение подзаголовков с указанием на "с" и "по" -->
-          <th colspan="3" class="permission-header">Разрешение на временное пребывание с</th>
-          <th colspan="3" class="permission-header">Разрешение на временное пребывание по</th>
+            <!-- Объединение подзаголовков с указанием на "с" и "по" -->
+            <th colspan="3" class="permission-header" style="text-align: center; width: 220px;">Разрешение на временное
+              пребывание с</th>
+            <th colspan="3" class="permission-header" style="text-align: center; width: 220px;">Разрешение на временное
+              пребывание по</th>
 
-          <th rowspan="2">Домашний адрес</th>
-          <th rowspan="2">Общежитие/квартира</th>
-          <th rowspan="2" id="admissionYear">Год поступления</th>
-          <th rowspan="2" id="graduationYear">Год окончания</th>
-          <th rowspan="2">Примечание**</th>
-          <th rowspan="2" id="curator">Куратор</th>
-          <th rowspan="2">Телефон куратора</th>
-          <th rowspan="2">Телефон студента</th>
-          <th rowspan="2">Примечание***</th>
-        </tr>
-        <tr>
-          <!-- Привязка столбцов для "День", "Месяц", "Год" к разрешению на временное пребывание -->
-          <th>День</th>
-          <th>Месяц</th>
-          <th>Год</th>
-          <th>День_</th>
-          <th>Месяц_</th>
-          <th>Год_</th>
-        </tr>
-      </thead>
+            <th rowspan="2" style="width: 200px; text-align: left;">Домашний адрес</th>
+            <th rowspan="2" style="width: 120px; text-align: left;">Общежитие/квартира</th>
+            <th rowspan="2" style="width: 100px; text-align: center;" id="admissionYear">Год поступления</th>
+            <th rowspan="2" style="width: 100px; text-align: center;" id="graduationYear">Год окончания</th>
+            <th rowspan="2" style="width: 150px; text-align: left;">Примечание**</th>
+            <th rowspan="2" style="width: 150px; text-align: left;" id="curator">Куратор</th>
+            <th rowspan="2" style="width: 150px; text-align: left;">Телефон куратора</th>
+            <th rowspan="2" style="width: 150px; text-align: left;">Телефон студента</th>
+            <th rowspan="2" style="width: 150px; text-align: left;">Примечание***</th>
+          </tr>
+          <tr>
+            <!-- Привязка столбцов для "День", "Месяц", "Год" к разрешению на временное пребывание -->
+            <th style="width: 30px; text-align: center;">День</th>
+            <th style="width: 70px; text-align: center;">Месяц</th>
+            <th style="width: 40px; text-align: center;">Год</th>
+            <th style="width: 40px; text-align: center;">День_</th>
+            <th style="width: 70px; text-align: center;">Месяц_</th>
+            <th style="width: 40px; text-align: center;">Год_</th>
+          </tr>
+        </thead>
 
       <tbody>
         <!-- Данные будут добавляться здесь динамически -->
