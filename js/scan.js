@@ -112,7 +112,7 @@ export function setupScanHandlers(scanKey, studentData) {
 
       if (file) {
         await handleFileUpload(scanKey, file); // Обработка загрузки файла
-
+        currentStudentData[scanKey] = true;
         viewButton.style.display = "block";
         addButton.style.display = "none";
         deleteButton.style.display = "block";

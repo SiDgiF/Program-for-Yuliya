@@ -8,16 +8,19 @@ const STORE_NAME = "students"; // Имя хранилища данных
  *
  * @returns {Promise<IDBDatabase>} - Промис, который возвращает объект базы данных.
  */
-async function openDB() {
+export async function openDB() {
   return new Promise((resolve, reject) => {
     console.log("Попытка открыть базу данных...");
 
+    // Открываем соединение с базой данных
     const request = indexedDB.open(DB_NAME, 1);
 
-    // Обновление структуры базы данных (создание хранилища)
+    // Если база данных впервые создаётся или версия обновляется
     request.onupgradeneeded = (event) => {
       console.log("Обновление базы данных...");
       const db = event.target.result;
+
+      // Создаём хранилище, если его ещё нет
       if (!db.objectStoreNames.contains(STORE_NAME)) {
         db.createObjectStore(STORE_NAME, {
           keyPath: "id", // Уникальный ключ для каждой записи
@@ -48,16 +51,19 @@ async function openDB() {
  * @param {Array} data - Массив объектов студентов.
  * @returns {Promise<void>} - Промис, который завершится после завершения транзакции.
  */
-async function saveStudents(data) {
+export async function saveStudents(data) {
   console.log("Сохранение данных студентов в IndexedDB...");
 
+  // Открываем базу данных
   const db = await openDB();
 
+  // Проверяем существование хранилища
   if (!db.objectStoreNames.contains(STORE_NAME)) {
     console.error(`Хранилище "${STORE_NAME}" не найдено.`);
     throw new Error(`Хранилище "${STORE_NAME}" не существует.`);
   }
 
+  // Создаём транзакцию на запись данных
   const transaction = db.transaction(STORE_NAME, "readwrite");
   const store = transaction.objectStore(STORE_NAME);
 
@@ -65,18 +71,18 @@ async function saveStudents(data) {
   store.clear();
   console.log("Старые данные очищены.");
 
-  // Добавляем новые записи
+  // Добавляем новые данные по одному
   data.forEach((student) => {
     store.add(student);
     console.log("Добавлен студент:", student);
   });
 
-  // Завершаем транзакцию и возвращаем промис
   return new Promise((resolve, reject) => {
     transaction.oncomplete = () => {
       console.log("Данные успешно сохранены.");
       resolve();
     };
+
     transaction.onerror = (event) => {
       console.error("Ошибка при сохранении данных:", event.target.error);
       reject(event.target.error);
@@ -89,19 +95,23 @@ async function saveStudents(data) {
  *
  * @returns {Promise<Array>} - Промис, который возвращает массив объектов студентов.
  */
-async function loadStudents() {
+export async function loadStudents() {
   console.log("Загрузка данных студентов из IndexedDB...");
 
+  // Открываем базу данных
   const db = await openDB();
 
+  // Проверяем существование хранилища
   if (!db.objectStoreNames.contains(STORE_NAME)) {
     console.error(`Хранилище "${STORE_NAME}" не найдено.`);
     throw new Error(`Хранилище "${STORE_NAME}" не существует.`);
   }
 
+  // Создаём транзакцию на чтение данных
   const transaction = db.transaction(STORE_NAME, "readonly");
   const store = transaction.objectStore(STORE_NAME);
 
+  // Получаем все данные из хранилища
   return new Promise((resolve, reject) => {
     const request = store.getAll();
 
@@ -117,38 +127,35 @@ async function loadStudents() {
   });
 }
 
-/**
- * Открывает соединение с базой данных "StudentDatabase" и создаёт хранилище "scans", если оно отсутствует.
- *
- * @returns {Promise<IDBDatabase>} - Промис, который возвращает объект базы данных.
- */
-function openDatabase() {
+export function openDatabase() {
   return new Promise((resolve, reject) => {
-    const request = indexedDB.open("StudentDatabase", 1);
+    const request = indexedDB.open("StudentDatabase", 1); // Создаём или открываем базу данных с именем "StudentDatabase"
 
+    // Обработчик успешного открытия базы данных
     request.onsuccess = (event) => {
-      resolve(event.target.result);
+      const db = event.target.result;
+      resolve(db); // Возвращаем объект базы данных
     };
 
+    // Обработчик ошибки открытия базы данных
     request.onerror = (event) => {
       console.error("Ошибка открытия базы данных:", event.target.error);
       reject(event.target.error);
     };
 
+    // Обработчик обновления версии базы данных (создание структуры)
     request.onupgradeneeded = (event) => {
       const db = event.target.result;
 
+      // Проверяем и создаём хранилище объектов для сканов
       if (!db.objectStoreNames.contains("scans")) {
         const scansStore = db.createObjectStore("scans", {
           keyPath: "scanKey",
-        });
-        scansStore.createIndex("scanKey", "scanKey", { unique: true });
+        }); // Хранилище с ключами "scanKey"
+        scansStore.createIndex("scanKey", "scanKey", { unique: true }); // Индекс для поиска по ключу
       }
 
-      console.log("Структура базы данных обновлена.");
+      console.log("Структура базы данных обновлена");
     };
   });
 }
-
-// Экспорт функций для использования в других модулях
-export { openDB, saveStudents, loadStudents, openDatabase };

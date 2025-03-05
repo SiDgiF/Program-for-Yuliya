@@ -71,3 +71,16 @@ export function readFileAsText(file) {
     reader.readAsText(file);
   });
 }
+
+// Создаём функцию для проверки пароля
+export function checkPassword(callback) {
+  console.log("checkPassword вызвана");
+  const password = prompt("Введите пароль:");
+  if (password === "1234") {
+    console.log("Пароль верный");
+    callback();
+  } else {
+    console.log("Неверный пароль");
+    alert("Неверный пароль!");
+  }
+}
