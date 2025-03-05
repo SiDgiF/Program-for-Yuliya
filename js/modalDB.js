@@ -1,5 +1,7 @@
 import { tableBody, updateTable, students } from "./main.js";
 import { checkPassword } from "./utils.js";
+import { setupPrintButton } from "./modalDB_elements.js";
+import { getFlagImage } from "./modalDB_elements.js";
 import { setupScanHandlers, updateScanButtons } from "./scan.js";
 // import { openDatabase } from "./indexedDBUtils.js";
 
@@ -37,31 +39,6 @@ export async function openDatabase() {
   });
 }
 
-function getFlagImage(country) {
-  const countryCodes = {
-    Азербайджан: "az",
-    "Арабская Республика Египет": "eg",
-    Беларусь: "by",
-    Венесуэла: "ve",
-    Вьетнам: "vn",
-    Гана: "gh",
-    Зимбабве: "zw",
-    Израиль: "il",
-    Иордания: "jo",
-    "Йеменская Республика": "ye",
-    Казахстан: "kz",
-    Китай: "cn",
-    Нигерия: "ng",
-    Россия: "ru",
-    Сирия: "sy",
-    Судан: "sd",
-    Таджикистан: "tj",
-    Туркменистан: "tm",
-  };
-
-  const countryCode = countryCodes[country];
-  return countryCode ? `https://flagcdn.com/w320/${countryCode}.png` : "";
-}
 // Открытие модального окна при клике на ФИО
 tableBody.addEventListener("click", (event) => {
   const cell = event.target;
@@ -248,17 +225,6 @@ function setupDeleteButton() {
     });
 }
 
-function setupPrintButton() {
-  document.getElementById("print-button").addEventListener("click", () => {
-    const printContents = modalDetails.innerHTML;
-    const originalContents = document.body.innerHTML;
-
-    document.body.innerHTML = `<body>${printContents}</body>`;
-    window.print();
-    document.body.innerHTML = originalContents;
-    window.location.reload();
-  });
-}
 // Закрытие модального окна через кнопку
 closeButton.addEventListener("click", closeModal);
 export async function closeModal() {
